@@ -1,0 +1,165 @@
+Paulo Trigo Silva (PTS)
+v11
+
+
+
+_______________________________________________________________________________________________
+* Lista síntese dos pacotes a instalar *
+_______________________________________________________________________________________________
+*1* Python
+*2* RDFLib (já inclui o SPARQL)
+
+Abaixo segue detalhe sobre todo o processo de instalação
+Todos os pacotes a instalar estão disponíveis na pasta "distribuicao_01_Python_RDFLib" moodle
+De qualquer modo abaixo está também informação sobre o URL origem de cada pacote
+_______________________________________________________________________________________________
+
+
+
+_______________________________________________________________________________________________
+::Instalar Python, última versão disponível; testado com 3.6.4::
+_______________________________________________________________________________________________
+Executar:
+instruções para python-3.6.4.exe (mas válido para qualquer versão posterior, e.g., v3.7.2)
+
+Disponível em:
+https://www.python.org/downloads/release/python-364/
+(na tabela de "Files" escolhi: "Windows x86 executable installer"; i.e., versão 32 bits)
+
+- para instalar: duplo "click" sobre o ficheiro "python-3.6.4.exe"
+- escolha "Add Python to PATH"
+- Ao instalar anote o caminho completo (e.g., eu instalei em "C:\myApp\Python364-32")
+
+- No caso de ter outra versão do Python previamente instalada deve,
+depois de instalar o Python 3.6.4, verificar que a variável de ambiente
+PATH aponta para a pasta onde este Python foi instalado (e.g., "C:\myApp\Python364-32")
+
+Toda esta instalação esta testada no ambiente:
+- Windows 10 | 32 bit
+
+
+
+_______________________________________________________________________________________________
+Em todo o processo de instalação que se segue alguns cenários de erro podem resultar de:
+- instalação num "path" demasiado longo
+- instalação num "path" que contem caracteres acentuados
+- incompatibilidade 32 | 64 bits
+_______________________________________________________________________________________________
+
+
+
+_______________________________________________________________________________________________
+** Pacotes a instalar **
+_______________________________________________________________________________________________
+>> Todos os pacotes necessários para a aula estão na pasta "distribuicao_01_Python_RDFLib"
+>> Só precisa des-compactar cada pacote e executar as linhas acima indicadas (em Command) 
+>> No entanto se quiser descarregar os pacotes tem (abaixo) a indicação dos locais de origem
+
+
+
+_______________________________________________________________________________________________
+_______________________________________________________________________________________________
+** Para instalar os pacotes que se seguem executar na pasta do pacote em causa a instrução:
+_______________________________________________________________________________________________
+python setup.py install
+(ver se existem erros)
+- mas, calma! o processo de instalação do RDFLib pode demorar algum tempo!
+
+>> IMPORTANTE <<
+Instalar com acesso Internet pois geralmente EXISTE instalação automática de dependências
+_______________________________________________________________________________________________
+_______________________________________________________________________________________________
+
+
+
+_______________________________________________________________________________________________
+>>> IMPORTANTE >>> Para >>>TESTAR<<< a instalação do RDFLib / SPARQL:
+_______________________________________________________________________________________________
+- Ir para pasta "x_testInstall" e executar "a01_SPARQL.py" fazendo:
+- numa janela "Command" mover para a pasta "...\Aula_01\_myRDF\x_testInstall" e escrever:
+> python a01_SPARQL.py
+- se for apresentado ok-1, ok-2, ok-3, ok-4, ok-5 a instalação ficou correcta
+
+
+
+_______________________________________________________________________________________________
+** Pacotes a instalar **
+- caso pretenda descarregar cada uma das versões do software a usar
+_______________________________________________________________________________________________
+*1* RDFLib:
+rdflib-4.2.2.zip
+https://pypi.python.org/pypi/rdflib/4.2.2
+- aí descarreguei "rdflib-4.2.2.tar.gz (md5)",
+- descomprimi e executei "python setup.py install" (referido acima)
+
+(Caso esta instalação não termine correctamente pode necessitar instalar o pacote "isodate-0.5.4":
+https://pypi.python.org/pypi/isodate)
+
+
+Informação sobre o RDFLib (excerto do site; em mar.2018):
+"RDFLib is a Python library for working with RDF, a simple yet powerful language for representing information.
+
+The library contains parsers and serializers for RDF/XML, N3, NTriples, Turtle, TriX, RDFa and Microdata. The library presents a Graph interface which can be backed by any one of a number of Store implementations. The core rdflib includes store implementations for in memory storage, persistent storage on top of the Berkeley DB, and a wrapper for remote SPARQL endpoints.
+
+A SPARQL 1.1 engine is also included."
+
+
+
+_______________________________________________________________________________________________
+** Documentação **
+_______________________________________________________________________________________________
+* RDFLib Docs:
+https://rdflib.readthedocs.io/en/stable/
+- na pasta da aula prática #2 está um documento .pdf com documentação do RDFLib
+
+* Discussion group:
+https://groups.google.com/forum/#!forum/rdflib-dev
+
+
+
+_______________________________________________________________________________________________
+** Dicas para detecção e resolução de alguns problemas relacionados com a execução do IDLE**
+_______________________________________________________________________________________________
+O ambiente IDLE inclui um editor, um interpretador e um "debugger" muito simples para o Python
+
+Caso tenha dificuldade em iniciar o ambiente IDLE
+(em geral resulta de conflito com outra(s) instalações Python)
+fazer, em linha de comando e assumindo que o Python está instalado em :
+
+C:\...\Python36\pythonw C:\...\Python36\Lib\idlelib\idle.py
+(isto deve funcionar mesmo que tenha conflito com outras instalações Python)
+
+Caso o IDLE execute correctamente uma solução será construir um ficheiro:
+idle.bat (e colocá-lo na pasta "C:\...\Python36\") de modo a que fique com código equivalente à expressão acima
+
+Caso o IDLE não execute correctamente , tentar
+- iniciar o IDLE como "Administrator"
+- iniciar o IDLE  depois de desligar a firewall do Windows (mais perigoso)
+
+
+
+
+_______________________________________________________________________________________________
+>> Informação apenas para "registo histórico"!
+_______________________________________________________________________________________________
+:: em versão anterior do Python era necessário instalar
+- Instalar "setup_tools"
+- que contém ferramenta para instalar distribuições de outros pacotes
+>> a versão Python 3.4.3 (e posteriores) já inclui o "setup_tools"
+>> assim não é necessário fazer a instalação separada do "setup_tools"
+>> no entanto (para efeitos de memória) fica abaixo a descrição da última instalação efetuada
+_______________________________________________________________________________________________
+1. descomprimir "distribute-0.6.49.tar" (na pasta "distribuicao_01")
+   OU
+   descarregar "distribute 0.6.49" de:
+    "https://pypi.python.org/pypi/distribute/0.6.49"
+   e descomprimir
+2. abrir uma "Command Prompt" (janela DOS)
+3. mover para a pasta (...)\distribute-0.6.49
+4. executar:
+   python distribute_setup.py 
+
+Depois desta instalação ver a pasta "...\Python33\Lib\site-packages" que
+deverá agora deve conter "distribute-0.6.49-py3.3.egg" onde está o "easy_install.py"
+
+
