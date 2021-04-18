@@ -1,0 +1,23 @@
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://meuMS/#amigoB> a foaf:Person ;
+    foaf:knows <http://meuMS/#amigoA>,
+        <http://meuMS/#eu> ;
+    foaf:name "nome do amigo B" .
+
+<http://meuMS/#amigoA> a foaf:Person ;
+    foaf:knows <http://meuMS/#eu> ;
+    foaf:mbox "amigoA@" ;
+    foaf:name "nome do amigo A" .
+
+<http://meuMS/#eu> a foaf:Person ;
+    foaf:knows <http://meuMS/#amigoA>,
+        <http://meuMS/#amigoB> ;
+    foaf:mbox "meumail@" ;
+    foaf:name "o meu nome" ;
+    foaf:nick "o meu cognome" .
+

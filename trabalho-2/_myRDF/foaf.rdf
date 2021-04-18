@@ -1,15 +1,25 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF
-   xmlns:foaf="http://este.namespace.esta.ERRADO/"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:foaf="http://xmlns.com/foaf/0.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
-  <rdf:Description rdf:nodeID="eu">
-    <rdf:type rdf:resource="http://este.namespace.esta.ERRADO/Person"/>
+  <foaf:Person rdf:about="http://meuMS/#eu">
     <foaf:name>o meu nome</foaf:name>
+    <foaf:knows rdf:resource="http://meuMS/#amigoB"/>
+    <foaf:mbox>meumail@</foaf:mbox>
     <foaf:nick>o meu cognome</foaf:nick>
-  </rdf:Description>
-  <rdf:Description rdf:nodeID="amigoA">
+    <foaf:knows rdf:resource="http://meuMS/#amigoA"/>
+  </foaf:Person>
+  <foaf:Person rdf:about="http://meuMS/#amigoB">
+    <foaf:knows rdf:resource="http://meuMS/#eu"/>
+    <foaf:knows rdf:resource="http://meuMS/#amigoA"/>
+    <foaf:name>nome do amigo B</foaf:name>
+    <foaf:mbox>amigoB@</foaf:mbox>
+  </foaf:Person>
+  <foaf:Person rdf:about="http://meuMS/#amigoA">
+    <foaf:knows rdf:resource="http://meuMS/#eu"/>
+    <foaf:knows rdf:resource="http://meuMS/#amigoB"/>
     <foaf:name>nome do amigo A</foaf:name>
-    <rdf:type rdf:resource="http://este.namespace.esta.ERRADO/Person"/>
-  </rdf:Description>
+    <foaf:mbox>amigoA@</foaf:mbox>
+  </foaf:Person>
 </rdf:RDF>

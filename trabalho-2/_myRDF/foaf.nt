@@ -1,0 +1,15 @@
+<http://meuMS/#eu> <http://xmlns.com/foaf/0.1/name> "o meu nome" .
+<http://meuMS/#amigoB> <http://xmlns.com/foaf/0.1/name> "nome do amigo B" .
+<http://meuMS/#amigoB> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://meuMS/#eu> <http://xmlns.com/foaf/0.1/mbox> "meumail@" .
+<http://meuMS/#amigoA> <http://xmlns.com/foaf/0.1/knows> <http://meuMS/#eu> .
+<http://meuMS/#eu> <http://xmlns.com/foaf/0.1/nick> "o meu cognome" .
+<http://meuMS/#amigoA> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://meuMS/#eu> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://xmlns.com/foaf/0.1/Person> .
+<http://meuMS/#amigoB> <http://xmlns.com/foaf/0.1/knows> <http://meuMS/#eu> .
+<http://meuMS/#amigoB> <http://xmlns.com/foaf/0.1/knows> <http://meuMS/#amigoA> .
+<http://meuMS/#amigoA> <http://xmlns.com/foaf/0.1/mbox> "amigoA@" .
+<http://meuMS/#eu> <http://xmlns.com/foaf/0.1/knows> <http://meuMS/#amigoB> .
+<http://meuMS/#amigoA> <http://xmlns.com/foaf/0.1/name> "nome do amigo A" .
+<http://meuMS/#eu> <http://xmlns.com/foaf/0.1/knows> <http://meuMS/#amigoA> .
+

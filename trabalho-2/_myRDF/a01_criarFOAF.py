@@ -16,12 +16,12 @@ from rdflib import RDF
 #______________________________________________________________________________
 # O essencial para construir um grafo de FOAF
 # FOAF significa: "Friend Of A Friend"
-namespace_foaf = "http://este.namespace.esta.ERRADO/" #string com o "namespace"
+namespace_foaf = "http://xmlns.com/foaf/0.1/" #string com o "namespace"
 qualificador_foaf = "foaf" #string com o qualificador a usar para o "namespace"
 FOAF = Namespace( namespace_foaf ) #variavel com registo do "namespace" FOAF
 # o meu "namespace"
-#namespace_mns = >ALTERAR<
-#MNS = >ALTERAR<
+namespace_mns = "http://meuMS/#"
+MNS = Namespace( namespace_mns )
 
       
 class GrafoFOAF:
@@ -29,7 +29,7 @@ class GrafoFOAF:
       # criar um grafo vazio
       self.grafo = Graph()
       # ligar, no contexto do grafo, o "namespace" e o seu qualificador
-      self.grafo.bind( qualificador_foaf, namespace_foaf )
+      self.grafo.bind( qualificador_foaf, namespace_foaf)
 
 
    def adicionarPessoa( self, nomeDaPessoa, idPessoa ):
@@ -38,12 +38,13 @@ class GrafoFOAF:
       <idPessoa, type, Person>, e
       <idPessoa, name, nomeDaPessoa>
       """
-      s = BNode( idPessoa ) #identificador para usar no "sujeito"
-      #s = >ALTERAR<
+      #s = BNode( idPessoa ) #identificador para usar no "sujeito"
+      s = MNS[idPessoa]
       p = RDF.type #predicado "rdf:type"
       o = FOAF[ "Person" ] #recurso "Person" definido em FOAF
       # adicionar tripo: <s, p, o>
       self.grafo.add( (s, p, o ) )
+
       p = FOAF[ "name" ] #recurso "name" definido em FOAF
       o = Literal( nomeDaPessoa )
       # adicionar tripo: <s, p, o>
@@ -56,10 +57,9 @@ class GrafoFOAF:
       <s, knows, o>
       mantem o registo de 'quem cohece quem'
       """
-      #p = >ALTERAR<
-      # adicionar tripo: <s, p, o>
-      #>ALTERAR<
-      #return >ALTERAR<
+      
+      p = FOAF[ "knows" ]
+      return self.grafo.add( (s, p, o ) )
 
 
 #______________________________________________________________________________
@@ -72,20 +72,18 @@ gf = GrafoFOAF()
 (eu, _, _) = gf.adicionarPessoa( "o meu nome", "eu" )
 # adicionar o meu cognome, ou alcunha ("nickname") e emdereco de email
 gf.grafo.add( (eu, FOAF[ "nick" ], Literal( "o meu cognome" )) )
-#gf.grafo.add( >ALTERAR< )
-
+gf.grafo.add( (eu, FOAF[ "mbox" ], Literal( "meumail@" )) )
 
 #______________________________________________________________________________
 # Criar um amigo: amigoA
 (amigoA, _, _) = gf.adicionarPessoa( "nome do amigo A", "amigoA" )
 # adicionar o emdereco de email do amigo
-#gf.grafo.add( >ALTERAR< )
+gf.grafo.add( (amigoA, FOAF[ "mbox" ], Literal( "amigoA@" )) )
 
 
 #______________________________________________________________________________
 # Criar um amigo: amigoB
-#(amigoB, _, _) = gf.adicionarPessoa( >ALTERAR< )
-
+(amigoB, _, _) = gf.adicionarPessoa( "nome do amigo B", "amigoB" )
 
 #______________________________________________________________________________
 # Definir as relacoes "knows" entre os meus amigos
@@ -94,16 +92,16 @@ gf.grafo.add( (eu, FOAF[ "nick" ], Literal( "o meu cognome" )) )
 # <eu, knows, amigoA>
 # <amigoA, knows, eu>
 # PTS: descomentar depois de implementar metodo: "s_knows_o"
-#gf.s_knows_o( eu, amigoA )
-#gf.s_knows_o( amigoA, eu )
+gf.s_knows_o( eu, amigoA )
+gf.s_knows_o( amigoA, eu )
 
 # <eu, knows, amigoB>
 # <amigoB, knows, eu>
-#>ALTERAR<
-#>ALTERAR<
+gf.s_knows_o( eu, amigoB )
+gf.s_knows_o( amigoB, eu )
 
 # <amigoA, knows, amigoB>
-#>ALTERAR<
+gf.s_knows_o( amigoB, amigoA )
 
 
 #______________________________________________________________________________
@@ -127,10 +125,11 @@ for s, p, o in gf.grafo:
 apresentarCabecalho( ".:: Apresentar os enderecos de e-mail ::." )
 
 for s in gf.grafo.subjects( RDF.type, FOAF[ "Person" ] ):
-    #[ o ] = >COMPLETAR< com nome da pessoa | sugestao: gf.grafo.objects( s, p ) devolve os "o"
     for mbox in gf.grafo.objects( s, FOAF[ "mbox" ] ):
-        pass #PTS: pode comentar assim que descomentar a que se segue
-        #print( "e-mail do \"%s\": \"%s\"" % (o, ">COMPLETAR<") )
+        print( "e-mail do \"%s\": \"%s\"" % (s, mbox) )
+
+    for name in gf.grafo.objects( s, FOAF[ "name" ] ):
+        print( "name do \"%s\": \"%s\"" % (s, name) )
 
 
 #______________________________________________________________________________
@@ -149,20 +148,23 @@ print( gf.grafo.serialize( format="xml" ) )
 file = open( "foaf.rdf", "wb" )
 #gf.grafo.serialize( file, format="pretty-xml" )
 #gf.grafo.serialize( file, format="xml" )
-gf.grafo.serialize( file, format="xml" )
 #gf.grafo.serialize( file, format="pretty-xml", max_depth=3 )
-#gf.grafo.serialize( file, format="pretty-xml", max_depth=1 )
+gf.grafo.serialize( file, format="pretty-xml", max_depth=1 )
 file.close()
 
 
 #______________________________________________________________________________
 # Serializar RDF com N-Triples
 apresentarCabecalho( ".:: Serializar RDF com N-Triples ::." )
-print( gf.grafo.serialize( format="nt" ) )
+file = open( "foaf.nt", "wb" )
+gf.grafo.serialize( file, format="nt" ) 
+file.close()
 
 
 #______________________________________________________________________________
 # Serializar RDF com N3
 apresentarCabecalho( ".:: Serializar RDF com N3 ::." )
-print( gf.grafo.serialize( format="n3" ) )
+file = open( "foaf.n3", "wb" )
+gf.grafo.serialize( file, format="n3" )
+file.close()
 

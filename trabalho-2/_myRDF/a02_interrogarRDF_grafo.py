@@ -55,11 +55,9 @@ def obterConhecidoMutuo( grafo ):
    resultado = []
    lista_s_o = list( grafo.subject_objects( FOAF[ "knows" ] ) )
    for (s, o) in lista_s_o:
-      #if >ALTERAR< #conhecido mutuo quando (o, s) pertence a lista_s_o
+      if lista_s_o.count((o, s)) == 1:
          resultado.append( (s, o) ) #(s, o) e (o, s) conhecem-se mutuamente
-         # >ALTERAR< #remover (o, s) de lista_s_o pois nao precisa novo processamento
    return resultado
-
 
 #______________________________________________________________________________
 # Utilitario para apresentar cabecalho
@@ -91,7 +89,7 @@ def apresentar_FOAFname( grafo, lista ):
 if __name__ == "__main__":
    from rdflib import __version__
    print( "\n%s RDFlib versao: \'%s\' %s" % (3*"*", __version__, 3*"*") )
-   grafo = construirGrafo()
+   grafo = construirGrafo('foaf.n3', 'n3')
    lista = obterConhecidoMutuo( grafo )
    apresentar_FOAFname( grafo, lista )
 

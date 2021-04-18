@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:foaf="http://xmlns.com/foaf/0.1/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://meuMS/#eu">
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:Knows rdf:resource="http://meuMS/#amigoA"/>
+    <foaf:name>o meu nome</foaf:name>
+    <foaf:Knows rdf:resource="http://meuMS/#amigoB"/>
+    <foaf:mbox>meumail@</foaf:mbox>
+    <foaf:nick>o meu cognome</foaf:nick>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://meuMS/#amigoB">
+    <foaf:Knows rdf:resource="http://meuMS/#amigoA"/>
+    <foaf:Knows rdf:resource="http://meuMS/#eu"/>
+    <foaf:name>nome do amigo B</foaf:name>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://meuMS/#amigoA">
+    <foaf:Knows rdf:resource="http://meuMS/#eu"/>
+    <foaf:mbox>amigoA@</foaf:mbox>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <foaf:name>nome do amigo A</foaf:name>
+  </rdf:Description>
+</rdf:RDF>
