@@ -18,7 +18,7 @@
 # Importar modulos
 import rdflib
 from rdflib import ConjunctiveGraph, Graph
-from rdflib  import Namespace
+from rdflib import Namespace
 import io
 # from version 4.1.1 we do not need to set SPARQL as a plgin (it is already included)
 #from rdflib import plugin
