@@ -4,22 +4,20 @@
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
 >
   <foaf:Person rdf:about="http://meuMS/#eu">
-    <foaf:name>o meu nome</foaf:name>
-    <foaf:knows rdf:resource="http://meuMS/#amigoB"/>
     <foaf:mbox>meumail@</foaf:mbox>
+    <foaf:name rdf:resource="http://meuMS/#o meu nome"/>
     <foaf:nick>o meu cognome</foaf:nick>
     <foaf:knows rdf:resource="http://meuMS/#amigoA"/>
-  </foaf:Person>
-  <foaf:Person rdf:about="http://meuMS/#amigoB">
-    <foaf:knows rdf:resource="http://meuMS/#eu"/>
-    <foaf:knows rdf:resource="http://meuMS/#amigoA"/>
-    <foaf:name>nome do amigo B</foaf:name>
-    <foaf:mbox>amigoB@</foaf:mbox>
+    <foaf:knows rdf:resource="http://meuMS/#amigoB"/>
   </foaf:Person>
   <foaf:Person rdf:about="http://meuMS/#amigoA">
-    <foaf:knows rdf:resource="http://meuMS/#eu"/>
-    <foaf:knows rdf:resource="http://meuMS/#amigoB"/>
-    <foaf:name>nome do amigo A</foaf:name>
+    <foaf:name rdf:resource="http://meuMS/#nome do amigo A"/>
     <foaf:mbox>amigoA@</foaf:mbox>
+    <foaf:knows rdf:resource="http://meuMS/#eu"/>
+  </foaf:Person>
+  <foaf:Person rdf:about="http://meuMS/#amigoB">
+    <foaf:knows rdf:resource="http://meuMS/#amigoA"/>
+    <foaf:knows rdf:resource="http://meuMS/#eu"/>
+    <foaf:name rdf:resource="http://meuMS/#nome do amigo B"/>
   </foaf:Person>
 </rdf:RDF>

@@ -46,7 +46,8 @@ class GrafoFOAF:
       self.grafo.add( (s, p, o ) )
 
       p = FOAF[ "name" ] #recurso "name" definido em FOAF
-      o = Literal( nomeDaPessoa )
+      #o = Literal( nomeDaPessoa )
+      o = MNS[nomeDaPessoa]
       # adicionar tripo: <s, p, o>
       self.grafo.add( (s, p, o ) )
       return (s, p, o )
