@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+	xmlns:tocha="http://tocha/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <tocha:JogosOlimpicos rdf:nodeID="_jogo1">
+    <tocha:noAno rdf:resource="http://tocha/#1896" />
+	<tocha:naCidade rdf:resource="http://tocha/#Atenas" />
+  </tocha:JogosOlimpicos>
+  <tocha:Ano rdf:about="http://tocha/#1896">
+  </tocha:Ano>
+  <tocha:Cidade rdf:about="http://tocha/#Atenas">
+	<tocha:pertence rdf:resource="http://tocha/#Grecia" />
+  </tocha:Cidade>
+  <tocha:Pais rdf:about="http://tocha/#Grecia">
+  </tocha:Pais>
+</rdf:RDF>
