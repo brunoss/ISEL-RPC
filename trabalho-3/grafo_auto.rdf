@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  xmlns:ns1="http://tocha/#"
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:ns2="http://critica/#"
+>
+  <ns1:JogosOlimpicos rdf:nodeID="_jogo1">
+    <ns1:noAno rdf:resource="http://tocha/#1896"/>
+    <ns1:naCidade rdf:resource="http://tocha/#Atenas"/>
+  </ns1:JogosOlimpicos>
+  <rdf:Description rdf:about="http://critica/#Pedro">
+    <ns2:dizer>
+      <rdf:Statement rdf:nodeID="_opiniao1">
+        <rdf:predicate rdf:resource="http://tocha/#achar"/>
+        <rdf:subject rdf:resource="http://tocha/#Londres"/>
+        <rdf:object>
+          <rdf:Statement rdf:nodeID="_opiniao2">
+            <rdf:predicate rdf:resource="http://tocha/#ser"/>
+            <rdf:object>fabuloso</rdf:object>
+            <rdf:subject>
+              <ns1:JogosOlimpicos rdf:nodeID="_jogo2">
+                <ns1:naCidade rdf:resource="http://tocha/#Londres"/>
+                <ns1:noAno rdf:resource="http://tocha/#2012"/>
+              </ns1:JogosOlimpicos>
+            </rdf:subject>
+          </rdf:Statement>
+        </rdf:object>
+      </rdf:Statement>
+    </ns2:dizer>
+  </rdf:Description>
+  <ns1:Ano rdf:about="http://tocha/#1896"/>
+  <ns1:Ano rdf:about="http://tocha/#2012"/>
+  <ns1:Cidade rdf:about="http://tocha/#Londres">
+    <ns1:pertence rdf:resource="http://tocha/#Reino_Unido"/>
+  </ns1:Cidade>
+  <rdfs:Class rdf:about="http://tocha/#JogosOlimpicos">
+    <ns1:inventadoEm rdf:resource="http://tocha/#Grecia"/>
+  </rdfs:Class>
+  <ns1:Cidade rdf:about="http://tocha/#Atenas">
+    <ns1:pertence rdf:resource="http://tocha/#Grecia"/>
+  </ns1:Cidade>
+  <ns1:País rdf:about="http://tocha/#Reino_Unido"/>
+  <ns1:País rdf:about="http://tocha/#Grecia"/>
+</rdf:RDF>
