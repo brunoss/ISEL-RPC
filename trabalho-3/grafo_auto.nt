@@ -23,4 +23,3 @@ _:_opiniao1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <http://tocha/#
 <http://tocha/#Grecia> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://tocha/#Pa\u00EDs> .
 <http://critica/#Pedro> <http://critica/#dizer> _:_opiniao1 .
 _:_jogo1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://tocha/#JogosOlimpicos> .
-

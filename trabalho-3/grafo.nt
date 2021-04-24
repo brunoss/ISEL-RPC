@@ -1,7 +1,0 @@
-<http://tocha/#_jogo1> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://tocha/JogosOlimpicos> .
-<http://tocha/#_jogo1> <http://tocha/noAno> <http://tocha/#1896> .
-<http://tocha/#_jogo1> <http://tocha/naCidade> <http://tocha/#Atenas> .
-<http://tocha/#1896> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://tocha/Ano> .
-<http://tocha/#Atenas> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://tocha/Cidade> .
-<http://tocha/#Atenas> <http://tocha/pertence> <http://tocha/Grecia> .
-<http://tocha/#Grecia> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://tocha/Pais> .
