@@ -1,5 +1,4 @@
-<http://critica/#Pedro> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://critica/#Pessoa> .
-<http://critica/#Pedro> <http://critica/#acredita> _:opiniao1 .
+<http://critica/#Pedro> <http://critica/#dizer> _:opiniao1 .
 _:opiniao1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
 _:opiniao1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> <http://critica/#Londres> .
 _:opiniao1 <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://critica/#achar> .
@@ -8,7 +7,9 @@ _:opiniao2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/
 _:opiniao2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#subject> _:jogo2 .
 _:opiniao2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#predicate> <http://critica/#ser> .
 _:opiniao2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#object> "fabulosa" .
-_:jogo2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/1999/02/22-rdf-syntax-ns#Statement> .
+_:jogo2 <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://critica/#JogosOlimpicos> .
 _:jogo2 <http://critica/#naCidade> <http://critica/#Londres> .
 _:jogo2 <http://critica/#noAno> <http://critica/#2012> .
 <http://critica/#Londres> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://critica/#Cidade> .
+<http://critica/#JogosOlimpicos> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2000/01/rdf-schema#Class> .
+<http://critica/#2012> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://critica/#Ano> .

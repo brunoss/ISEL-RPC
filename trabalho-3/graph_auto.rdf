@@ -1,47 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <rdf:RDF
-  xmlns:ns1="http://tocha/#"
-  xmlns:ns3="http://map/#"
-  xmlns:ns4="http://time/#"
+  xmlns:ns1="http://map/#"
   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-  xmlns:ns2="http://critica/#"
   xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xmlns:ns2="http://critica/#"
+  xmlns:ns3="http://tocha/#"
+  xmlns:ns4="http://time/#"
 >
+  <ns3:JogosOlimpicos rdf:nodeID="_jogo1">
+    <ns3:noAno rdf:resource="http://time/#1896"/>
+    <ns3:naCidade rdf:resource="http://map/#Atenas"/>
+  </ns3:JogosOlimpicos>
   <rdf:Description rdf:about="http://critica/#Pedro">
     <ns2:dizer>
       <rdf:Statement rdf:nodeID="_opiniao1">
+        <rdf:predicate rdf:resource="http://critica/#achar"/>
+        <rdf:subject rdf:resource="http://map/#Londres"/>
         <rdf:object>
           <rdf:Statement rdf:nodeID="_opiniao2">
-            <rdf:subject>
-              <ns1:JogosOlimpicos rdf:nodeID="_jogo2">
-                <ns1:naCidade rdf:resource="http://map/#Londres"/>
-                <ns1:noAno rdf:resource="http://time/#2012"/>
-              </ns1:JogosOlimpicos>
-            </rdf:subject>
-            <rdf:object>Fabuloso</rdf:object>
             <rdf:predicate rdf:resource="http://critica/#ser"/>
+            <rdf:object>Fabuloso</rdf:object>
+            <rdf:subject>
+              <ns3:JogosOlimpicos rdf:nodeID="_jogo2">
+                <ns3:naCidade rdf:resource="http://map/#Londres"/>
+                <ns3:noAno rdf:resource="http://time/#2012"/>
+              </ns3:JogosOlimpicos>
+            </rdf:subject>
           </rdf:Statement>
         </rdf:object>
-        <rdf:subject rdf:resource="http://map/#Londres"/>
-        <rdf:predicate rdf:resource="http://critica/#achar"/>
       </rdf:Statement>
     </ns2:dizer>
   </rdf:Description>
-  <ns1:JogosOlimpicos rdf:nodeID="_jogo1">
-    <ns1:noAno rdf:resource="http://time/#1896"/>
-    <ns1:naCidade rdf:resource="http://map/#Atenas"/>
-  </ns1:JogosOlimpicos>
-  <ns3:Cidade rdf:about="http://map/#Londres">
-    <ns3:pertence rdf:resource="http://map/#Reino_Unido"/>
-  </ns3:Cidade>
-  <ns3:País rdf:about="http://map/#Reino_Unido"/>
   <rdfs:Class rdf:about="http://tocha/#JogosOlimpicos">
-    <ns1:inventadoEm rdf:resource="http://map/#Grecia"/>
+    <ns3:inventadoEm rdf:resource="http://map/#Grecia"/>
   </rdfs:Class>
-  <ns4:Ano rdf:about="http://time/#1896"/>
   <ns4:Ano rdf:about="http://time/#2012"/>
-  <ns3:Cidade rdf:about="http://map/#Atenas">
-    <ns3:pertence rdf:resource="http://map/#Grecia"/>
-  </ns3:Cidade>
-  <ns3:País rdf:about="http://map/#Grecia"/>
+  <ns1:Cidade rdf:about="http://map/#Londres">
+    <ns1:pertence rdf:resource="http://map/#Reino_Unido"/>
+  </ns1:Cidade>
+  <ns1:Cidade rdf:about="http://map/#Atenas">
+    <ns1:pertence rdf:resource="http://map/#Grecia"/>
+  </ns1:Cidade>
+  <ns1:País rdf:about="http://map/#Reino_Unido"/>
+  <ns4:Ano rdf:about="http://time/#1896"/>
+  <ns1:País rdf:about="http://map/#Grecia"/>
 </rdf:RDF>

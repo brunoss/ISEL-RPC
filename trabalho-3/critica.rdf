@@ -1,26 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE rdf:RDF [
-<!ENTITY E "http://critica/#">
+<!DOCTYPE rdf:RDF [<!ENTITY E "http://critica/#">
 ]>
 <rdf:RDF 
     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
     xmlns:E="http://critica/#"
 >
   <rdf:Description rdf:about="&E;Pedro">
-    <E:acredita rdf:resource="#_opiniao1"/>
+    <E:dizer rdf:resource="#_opiniao1"/>
   </rdf:Description>
   <rdf:Statement rdf:ID="_opiniao1">
     <rdf:subject rdf:resource="&E;Londres"/>
     <rdf:predicate rdf:resource="&E;achar"/>
     <rdf:object rdf:resource="#_opiniao2"/>
   </rdf:Statement>
-  <rdf:Description rdf:about="&E;Londres">
-    <E:acredita rdf:resource="#_opiniao2"/>
-  </rdf:Description>
   <rdf:Statement rdf:ID="_opiniao2">
     <rdf:subject rdf:resource="&E;_jogo2"/>
     <rdf:predicate rdf:resource="&E;ser"/>
-    <rdf:object>fabuloso</rdf:object>
+    <rdf:object>fabulosa</rdf:object>
   </rdf:Statement>
   <E:JogosOlimpicos rdf:about="http://critica/#_jogo2">
     <E:noAno rdf:resource="http://critica/#2012" />
