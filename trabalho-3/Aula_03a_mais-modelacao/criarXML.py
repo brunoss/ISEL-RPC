@@ -2,7 +2,7 @@
 # Importar modulos
 from rdflib.graph import Graph
 from rdflib import URIRef, Literal, BNode, Namespace, Variable
-from rdflib import RDF, RDFS
+from rdflib import RDF, RDFS,XSD
 
 # ______________________________________________________________________________
 # Namespaces
@@ -62,30 +62,35 @@ gf = graph()
 
 gf.addTuple(BNS, 'IEEE', RDF, 'type', BNS, 'Editora')
 gf.addTuple(BNS, 'Springer', RDF, 'type', BNS, 'Editora')
-gf.addTuple(BNS, '12345', RDF, 'type', BNS, 'ArtigoCientifico')
+gf.addTuple(BNS, 'doi-12345', RDF, 'type', BNS, 'ArtigoCientifico')
 gf.addTuple(BNS, 'Pedro', RDF, 'type', BNS, 'Autor')
 gf.addTuple(BNS, 'Maria', RDF, 'type', BNS, 'Autor')
 
+gf.addTuple(BNS, 'Pedro', BNS, 'eAutor', BNS, 'doi-12345')
+gf.addTuple(BNS, 'Maria', BNS, 'eAutor', BNS, 'doi-12345')
+
 gf.addTuple(None, '_pub1', RDF, 'type', BNS, 'Publicacao')
 gf.addTuple(None, '_pub1', BNS, 'publicadoPor', BNS, 'Springer')
-gf.addTuple(None, '_pub1', BNS, 'artigo', BNS, 'Publicacao')
-gf.addTuple(None, '_pub1', BNS, 'autor', BNS, '_pub1a1')
-gf.addTuple(None, '_pub1', BNS, 'autor', BNS, '_pub1a2')
+gf.addTuple(None, '_pub1', BNS, 'artigo', BNS, 'doi-12345')
+gf.addTuple(None, '_pub1', BNS, 'autor', '', '_pub1a1')
+gf.addTuple(None, '_pub1', BNS, 'autor', '', '_pub1a2')
 
-gf.addStatement('_pub1a1', BNS, 'Maria', BNS, 'temOrdem', BNS, '1')
-gf.addStatement('_pub1a2', BNS, 'Pedro', BNS, 'temOrdem', BNS, '2')
+gf.addStatement('_pub1a1', BNS, 'Maria', BNS, 'temOrdem', XSD, '1')
+gf.addStatement('_pub1a2', BNS, 'Pedro', BNS, 'temOrdem', XSD, '2')
 
 gf.addTuple(None, '_pub2', RDF, 'type', BNS, 'Publicacao')
 gf.addTuple(None, '_pub2', BNS, 'publicadoPor', BNS, 'IEEE')
-gf.addTuple(None, '_pub2', BNS, 'artigo', BNS, 'Publicacao')
-gf.addTuple(None, '_pub2', BNS, 'autor', BNS, '_pub2a1')
-gf.addTuple(None, '_pub2', BNS, 'autor', BNS, '_pub2a2')
+gf.addTuple(None, '_pub2', BNS, 'artigo', BNS, 'doi-12345')
+gf.addTuple(None, '_pub2', BNS, 'autor', '', '_pub2a1')
+gf.addTuple(None, '_pub2', BNS, 'autor', '', '_pub2a2')
 
-gf.addStatement('_pub2a1', BNS, 'Pedro', BNS, 'temOrdem', BNS, '1')
-gf.addStatement('_pub2a2', BNS, 'Maria', BNS, 'temOrdem', BNS, '2')
+gf.addStatement('_pub2a1', BNS, 'Pedro', BNS, 'temOrdem', XSD, '1')
+gf.addStatement('_pub2a2', BNS, 'Maria', BNS, 'temOrdem', XSD, '2')
 
-gf.addTuple(BNS, 'Pedro', BNS, 'dizer', BNS, '_stm')
+gf.addTuple(BNS, 'Pedro', BNS, 'dizer', '', '_stm')
 gf.addStatement('_stm', BNS, 'Maria', BNS, 'gosta', BNS, 'IEEE')
+
+gf.addTuple(BNS, 'Maria', BNS, 'gosta', BNS, 'Springer')
 
 def apresentarCabecalho(texto):
     print
