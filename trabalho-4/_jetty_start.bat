@@ -1,7 +1,7 @@
 #PTS
 
 
-set jetty=".\..\jetty-distribution-9.4.8.v20171121"
+set jetty=".\jetty-distribution-9.4.8.v20171121"
 
 cd %jetty%\
 

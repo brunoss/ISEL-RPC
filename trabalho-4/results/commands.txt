@@ -1,0 +1,84 @@
+select distinct ?Concept where {[] a ?Concept} LIMIT 100
+
+select distinct ?s ?Concept where {?s a ?Concept}
+
+ .\_jetty_start.bat
+ 
+ 
+ 
+  verify "..\\..\\a00z_amigo.rdf"
+  
+  verify "..\\..\\a00z_amigo.xml"
+  
+  
+  
+  SELECT ?s WHERE { ?s rdf:type foaf:Person . ?person foaf:name ?name}
+  
++-----------------------------------------------------------------------------+
+| s                                                                           |
++-----------------------------------------------------------------------------+
+| _:node1f56nh224x1                                                           |
+| _:node1f56nh224x2                                                           |
+| _:node1f56nh224x3                                                           |
+| _:node1f56nh224x4                                                           |
++-----------------------------------------------------------------------------+
+
+
+
+
+6.I) 
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?name
+WHERE { ?person foaf:name ?name }
+
+
+
+
+8.d
+
+Trabalho 3.A
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ns1: <http://tocha/#>
+PREFIX ns2: <http://map/#>
+PREFIX ns3: <http://critica/#>
+PREFIX ns4: <http://time/#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?Cidade
+WHERE { ?Cidade rdf:type ns1:País }
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ns1: <http://tocha/#>
+PREFIX ns2: <http://map/#>
+PREFIX ns3: <http://critica/#>
+PREFIX ns4: <http://time/#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?JogosOlimpicos
+WHERE { ?JogosOlimpicos ns1:naCidade ns2:Atenas }
+
+
+Trabalho 3.B
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ns1: <http://book/#>
+SELECT ?Publicacao
+WHERE { ?Publicacao ns1:publicadoPor ns1:Springer }
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ns1: <http://book/#>
+SELECT ?Autor
+WHERE { ?Autor ns1:eAutor ns1:doi-12345 }
+
+
+8.f
+
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ns1: <http://tocha/#>
+PREFIX ns2: <http://map/#>
+PREFIX ns3: <http://critica/#>
+PREFIX ns4: <http://time/#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+DELETE { ?JogosOlimpicos ns1:inventadoEm ns2:Grecia }
+INSERT { ?JogosOlimpicos ns1:inventadoEm ns2:Portugal }
+WHERE { ?JogosOlimpicos rdf:type rdfs:Class }
