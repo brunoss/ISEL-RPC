@@ -1,0 +1,30 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?sujeito ?amigo
+WHERE { 
+  ?sujeito rdf:type foaf:Person .
+  ?sujeito foaf:knows ?amigo .
+}
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+SELECT ?sujeito ?amigo
+WHERE { 
+  ?sujeito rdf:type foaf:Person .
+  ?sujeito foaf:knows ?amigo .
+}
+
+PREFIX ns4: <http://time/#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ns1: <http://tocha/#>
+PREFIX ns3: <http://critica/#>
+SELECT ?person ?personOpinion ?opiniao1_subject ?ano ?opiniao1_predicate ?opiniao2_predicate ?opiniao2_object
+WHERE { 
+  ?jogoOlimpico rdf:type ns1:JogosOlimpicos .
+  ?jogoOlimpico ns1:noAno ?ano .
+  ?opiniao2 rdf:subject ?jogoOlimpico .
+  ?opiniao2 rdf:predicate ?opiniao2_predicate .
+  ?opiniao2 rdf:object ?opiniao2_object .
+  ?opiniao1 rdf:object ?opiniao2 .
+  ?opiniao1 rdf:predicate ?opiniao1_predicate .
+  ?opiniao1 rdf:subject ?opiniao1_subject .
+  ?person ?personOpinion ?opiniao1 .
+}
