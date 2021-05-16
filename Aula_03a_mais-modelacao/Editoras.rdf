@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [<!ENTITY E "http://book/#">]>
+<rdf:RDF 
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:E="http://book/#"
+>
+  <E:Editora rdf:about="&E;IEEE" />
+  <E:Editora rdf:about="&E;Springer" />
+  <E:ArtigoCientifico rdf:about="&E;12345" />
+  <E:Autor rdf:about="&E;Pedro" />
+  <E:Autor rdf:about="&E;Maria" />
+  
+  <E:Publicacao rdf:ID="_pub1">
+	<E:publicadoPor rdf:resource="&E;Springer" />
+	<E:artigo rdf:resource="&E;12345" />
+	<E:autor rdf:resource="#_pub1a1" />
+	<E:autor rdf:resource="#_pub1a2" />
+  </E:Publicacao>
+  <rdf:Statement rdf:ID="_pub1a1">
+	<rdf:subject rdf:resource="&E;Maria"/>
+    <rdf:predicate rdf:resource="&E;temOrdem"/>
+    <rdf:object rdf:resource="http://www.w3.org/2001/XMLSchema#1"/>
+  </rdf:Statement>  
+  <rdf:Statement rdf:ID="_pub1a2">
+	<rdf:subject rdf:resource="&E;Pedro"/>
+    <rdf:predicate rdf:resource="&E;temOrdem"/>
+    <rdf:object rdf:resource="http://www.w3.org/2001/XMLSchema#2"/>
+  </rdf:Statement>  
+  
+  <E:Publicacao rdf:ID="_pub2">
+	<E:publicadoPor rdf:resource="&E;IEEE" />
+	<E:artigo rdf:resource="&E;12345" />
+	<E:autor rdf:resource="#_pub2a1" />
+	<E:autor rdf:resource="#_pub2a2" />
+  </E:Publicacao>
+  <rdf:Statement rdf:ID="_pub2a1">
+	<rdf:subject rdf:resource="&E;Pedro"/>
+    <rdf:predicate rdf:resource="&E;temOrdem"/>
+    <rdf:object rdf:resource="http://www.w3.org/2001/XMLSchema#1"/>
+  </rdf:Statement>  
+  <rdf:Statement rdf:ID="_pub2a2">
+	<rdf:subject rdf:resource="&E;Maria"/>
+    <rdf:predicate rdf:resource="&E;temOrdem"/>
+    <rdf:object rdf:resource="http://www.w3.org/2001/XMLSchema#2"/>
+  </rdf:Statement>  
+  
+</rdf:RDF>
