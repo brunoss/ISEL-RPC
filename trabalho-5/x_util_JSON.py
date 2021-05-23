@@ -33,9 +33,40 @@ JSONvar = \
                     "Concept": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }} ] } } \
 
 
-#JSONvar = \
-#<COMPLETAR> alterando x e Concept para myX myY myZ
-
+JSONvar = \
+{ "head": { "link": [], "vars": ["myX", "myY", "myZ"] }, \
+  "results": { "distinct": False, "ordered": True, \
+               "bindings": [ \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/purpose" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/supplementalDraftRound" },
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/podiums" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/buildingStartDate" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/longtype" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/sessionNumber" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/orbitalPeriod" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/status" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/originalMaximumBoatBeam" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}, \
+                  { "myX": { "type": "uri", "value": "http://dbpedia.org/ontology/nssdcId" }, \
+                    "myY": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#DatatypeProperty" }, \
+                    "myZ": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#label" }}] } }
 
 #______________________________________________________________________________
 # Transforma estrutura JSON em lista de listas
@@ -81,6 +112,6 @@ if __name__ == '__main__':
    print()
    print( list_JSONvar )
    print()
-   for [a, b] in list_JSONvar:
-      print( "%s || %s" % (a, b) )
+   for [a, b, c] in list_JSONvar:
+      print( "%s || %s || %s" % (a, b, c) )
    print()

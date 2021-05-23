@@ -1,0 +1,15 @@
+PREFIX ns4: <http://time/#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ns1: <http://tocha/#>
+PREFIX ns3: <http://critica/#>
+SELECT ?s ?opinion ?opiniao1_subject ?opiniao1_predicate ?opiniao2_predicate ?o
+WHERE { 
+  ?jogoOlimpico rdf:type ns1:JogosOlimpicos .
+  ?opiniao2 rdf:subject ?jogoOlimpico .
+  ?opiniao2 rdf:predicate ?opiniao2_predicate .
+  ?opiniao2 rdf:object ?o .
+  ?opiniao1 rdf:object ?opiniao2 .
+  ?opiniao1 rdf:predicate ?opiniao1_predicate .
+  ?opiniao1 rdf:subject ?opiniao1_subject .
+  ?s ?opinion ?opiniao1
+}

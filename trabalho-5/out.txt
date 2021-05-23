@@ -1,0 +1,1 @@
+[['http://critica/#Pedro', 'http://critica/#dizer', 'http://map/#Londres', 'http://critica/#achar', 'http://critica/#ser', 'Fabuloso']]

@@ -33,9 +33,21 @@ print( conn.endpoint )
 # (codigo escrito de modo sequencial - para evidenciar o essencial)
 q = \
 """
-PREFIX foaf:  <http://xmlns.com/foaf/0.1/>
-SELECT ?s ?o
-WHERE { ?s foaf:name ?o . }
+PREFIX ns4: <http://time/#>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX ns1: <http://tocha/#>
+PREFIX ns3: <http://critica/#>
+SELECT ?s ?opinion ?opiniao1_subject ?opiniao1_predicate ?opiniao2_predicate ?o
+WHERE { 
+  ?jogoOlimpico rdf:type ns1:JogosOlimpicos .
+  ?opiniao2 rdf:subject ?jogoOlimpico .
+  ?opiniao2 rdf:predicate ?opiniao2_predicate .
+  ?opiniao2 rdf:object ?o .
+  ?opiniao1 rdf:object ?opiniao2 .
+  ?opiniao1 rdf:predicate ?opiniao1_predicate .
+  ?opiniao1 rdf:subject ?opiniao1_subject .
+  ?s ?opinion ?opiniao1
+}
 """
 conn.setQuery( q )
 
@@ -50,23 +62,23 @@ print( result.info() )
 print()
 
 # JSON
-##print( '\n\n*** Exemplo JSON:' )
-##result = conn.query().convert()
-##for r in result["results"]["bindings"]:
-##   print( r["s"]["value"] + " | " + r["o"]["value"] )
-##print()
+print( '\n\n*** Exemplo JSON:' )
+result = conn.query().convert()
+for r in result["results"]["bindings"]:
+   print( r["s"]["value"] + " | " + r["o"]["value"] )
+print()
 ##
 ##
 ### JSON | iterar nos resultados usando getResultSet()
-##result = conn.query().convert()
-##print( "Uso de: getResultSet()" )
-##for r in getResultSet( result ): print( r )
+result = conn.query().convert()
+print( "Uso de: getResultSet()" )
+for r in getResultSet( result ): print( r )
 ##
 ##
 ### XML
-##print( '\n\n*** Exemplo JSON\XML:' )
-##conn.setReturnFormat(XML)
-##result = conn.query().convert()
-##print( result.toxml() )
+print( '\n\n*** Exemplo JSON\XML:' )
+conn.setReturnFormat(XML)
+result = conn.query().convert()
+print( result.toxml() )
 
 
