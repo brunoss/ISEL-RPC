@@ -1,16 +1,37 @@
 import sys
+import os.path
 from myENDPOINT_access import f_ENDPOINT_access
 from SPARQLWrapper import SPARQLWrapper, XML, N3, TURTLE, RDF, JSON, JSONLD
 
+def chooseElement(arr, prompt):
+    print(prompt)
+    i = 1
+    for f in arr:
+        print(str(i) + ". " + f)
+        i += 1
+    
+    j = -1
+    while j <= 0 or j > len(arr):
+        j = int(input(prompt))
+    return arr[j - 1]
+    
 if __name__ == "__main__":
+    if not os.path.exists("query.txt"):
+        print("please create query.txt with valid SPARQL Query")
+        
     f = open("query.txt", "r")
     query = f.read()
     f.close()
 
-    repository = sys.argv[1]
-    list_FORMAT_fallback = [JSONLD, JSON, TURTLE, XML, N3, RDF]
-
-    responseFormat, resultSet = f_ENDPOINT_access( query, list_FORMAT_fallback, repository )
+    print('default repository http://localhost:8280/rdf4j-server/repositories/repo-con')
+    repository = input('Introduza o url do repositório: ')
+    if not repository:
+        repository = "http://localhost:8280/rdf4j-server/repositories/repo-con"
+    
+    formats = [XML, N3, TURTLE, RDF, JSON, JSONLD]
+    chosenFormat = chooseElement(formats, "Escolha o formato: ")
+    
+    responseFormat, resultSet = f_ENDPOINT_access( query, [chosenFormat], repository )
 
     f = open("out.txt", "w")
     f.write(str(resultSet))
