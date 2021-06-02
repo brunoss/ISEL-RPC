@@ -1,0 +1,7 @@
+PTS
+
+caso seja necessário, o ficheiro server.py (nesta pasta) deve substituir o ficheiro com mesmo nome que está em:
+C:\...\Python364-32\Lib\site-packages\cheroot
+(C:\...\Python364-32 representa o "path" de instalaçao do Python)
+
+Siga o guia da aula prática até perceber se é, ou não, necessário fazer este "fix".

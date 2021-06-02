@@ -1,0 +1,59 @@
+>> testar primeiro em:
+http://dbpedia.org/sparql/
+
+
+
+=====//\\=====
+(A) Quais as bandas de Jazz e respetivos membros (apenas de "England")
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT STR(?bandName) ?personName 
+WHERE {
+  ?band dbo:genre dbr:Jazz .
+  ?band foaf:name ?bandName .
+  FILTER( lang(?bandName) = "en" )
+
+  ?band dbo:bandMember ?person .
+  ?person foaf:name ?personName .
+  FILTER( lang(?personName) = "en" )
+}
+ORDER BY DESC( ?band )
+
+
+
+=====//\\=====
+(B) Lista de todos os géneros (i.e., o objecto de uma relação dbo:genre)
+(B.1) refazer interrogação anterior para obter outro género musical
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT DISTINCT ?genre
+WHERE {
+  ?_ dbo:genre ?genre .
+  ?genre rdf:type dbo:MusicGenre .
+}
+
+
+
+=====//\\=====
+(C) Qual a distância (linha recta) entre New York e London?
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+SELECT ?ny ?ny_geo ?ln ?ln_geo ( bif:round ( bif:st_distance ( ?ny_geo, ?ln_geo ) ) ) AS ?dist
+WHERE 
+{
+  dbr:New_York_City rdfs:label ?ny .
+  FILTER(langMatches(lang(?ny), "en")) 
+  dbr:London rdfs:label ?ln . 
+  FILTER(langMatches(lang(?ln), "en")) 
+  dbr:New_York_City geo:geometry ?ny_geo .
+  dbr:London geo:geometry ?ln_geo .
+}
+
+
+
+=====//\\=====
+(D) Refazer interrogação anterior e obter distância (linha recta) entre Lisbon e London

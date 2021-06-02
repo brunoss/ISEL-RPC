@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF
+   xmlns:ns1="http://xmlns.com/foaf/0.1/"
+   xmlns:ns2="http://myNS/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:nodeID="N0800419225524141bab1f3909a9a39b5">
+    <ns1:name>Edsger W. Dijkstra</ns1:name>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <ns2:temPublicacaoComTitulo>ALGOL Sub-Committee Report - Extensions.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Solutions of a Problem in Concurrent Programming Control (Reprint).</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>The Structure of "THE"-Multiprogramming System.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Letters to the editor: The go to statement reconsidered.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Solution of a problem in concurrent programming control.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Communication with an Automatic Computer</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Letters to the editor: go to statement considered harmful.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Letter to the editor: defense of ALGOL 60.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Some Meditations on Advanced Programming.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Some comments on the aims of MIRFAC.</ns2:temPublicacaoComTitulo>
+  </rdf:Description>
+  <rdf:Description rdf:nodeID="N068b719775b14df8ac4bd0076317f505">
+    <ns1:name>Frederic Brenton Fitch</ns1:name>
+    <ns2:temPublicacaoComTitulo>A Basic Logic.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>A Minimum Calculus for Logic.</ns2:temPublicacaoComTitulo>
+    <rdf:type rdf:resource="http://xmlns.com/foaf/0.1/Person"/>
+    <ns2:temPublicacaoComTitulo>A System of Formal Logic Without an Analogue to the Curry W Operator.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>The Hypothesis That Infinite Classes are Similar.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Corrections to Two Papers on Modal Logic.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Representations of Calculi.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Modal Functions in Two-Valued Logic.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>The Consistency of the Ramified Principia.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Note on Modal Functions.</ns2:temPublicacaoComTitulo>
+    <ns2:temPublicacaoComTitulo>Closure and Quine's *101.</ns2:temPublicacaoComTitulo>
+  </rdf:Description>
+</rdf:RDF>

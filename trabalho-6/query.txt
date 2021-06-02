@@ -1,0 +1,8 @@
+PREFIX po: <http://purl.org/ontology/po/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+SELECT ?uri ?label
+WHERE
+{
+	?uri po:category <http://www.bbc.co.uk/programmes/people/bmFtZS9ib25kLCBqYW1lcyAobm8gcXVhbGlmaWVyKQ#person> .
+	?uri rdfs:label ?label .
+}
