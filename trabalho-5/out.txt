@@ -1,1 +1,1 @@
-[['http://critica/#Pedro', 'http://critica/#dizer', 'http://map/#Londres', 'http://critica/#achar', 'http://critica/#ser', 'Fabuloso']]
+b's,opinion,opiniao1_subject,opiniao1_predicate,opiniao2_predicate,o\r\nhttp://critica/#Pedro,http://critica/#dizer,http://map/#Londres,http://critica/#achar,http://critica/#ser,Fabuloso\r\n'
