@@ -1,4 +1,4 @@
-# -*- coding: cp1252 -*-
+#coding=utf-8
 # ===============================
 # author: Paulo Trigo Silva (PTS)
 # version: v07
@@ -29,11 +29,11 @@ class Main( object ):
 
    @cherrypy.expose
    def index( self ):
-      return "Ola Mundo"
+      return "Olá Mundo"
 
    @cherrypy.expose
    def saudacao( self, nome ):
-      return "Ola, %s" % nome
+      return "Olá, %s" % nome
 
 
 import os.path

@@ -128,10 +128,13 @@ class Interrogacao( object ):
       
       result_html = ""
       separator = "&nbsp | &nbsp"
-      for [x] in result:
-         result_html += separator
-         result_html += "<a href=" + str( x ) + ">" + str( x ) + "</a>" + separator
-         result_html += lineBreak
+      for arr in result:
+        result_html += "<div>"
+        result_html += separator
+        for elem in arr:
+            result_html += str(elem) + separator
+                
+        result_html += "</div>"
       
       return result_html
 
@@ -179,23 +182,18 @@ sparql_rkbexplorer = \
 # (cf., http://dbpedia.org/sparql)
 sparql_dbpedia = \
   """
-  PREFIX dbo: <http://dbpedia.org/ontology/>
-  PREFIX dbr: <http://dbpedia.org/resource/>
-  PREFIX dbp: <http://dbpedia.org/property/>
-  PREFIX foaf: <http://xmlns.com/foaf/0.1/>
-  PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX dbr: <http://dbpedia.org/resource/>
 
-  SELECT STR(?bandName) ?personName 
-  WHERE {
-    ?band dbo:genre dbr:Jazz .
-    ?band foaf:name ?bandName .
-    FILTER( lang(?bandName) = "en" )
-
-    ?band dbo:bandMember ?person .
-    ?person foaf:name ?personName .
-    FILTER( lang(?personName) = "en" )
-  }
-  ORDER BY DESC( ?band )
+SELECT ?ny ?ny_geo ?ln ?ln_geo ( bif:round ( bif:st_distance ( ?ny_geo, ?ln_geo ) ) ) AS ?dist
+WHERE 
+{
+  dbr:Lisbon rdfs:label ?ny .
+  FILTER(langMatches(lang(?ny), "en")) 
+  dbr:London rdfs:label ?ln . 
+  FILTER(langMatches(lang(?ln), "en")) 
+  dbr:Lisbon geo:geometry ?ny_geo .
+  dbr:London geo:geometry ?ln_geo .
+}
   """
 
 
@@ -211,9 +209,9 @@ if __name__ == '__main__':
    #atencao: o seguimento de alguns links pode demorar um pouco!
 
    # o SPARQLendpoint da DBPedia esteve algum tempo sem responder (MAI.2017 \ PTS)
-   #url = "http://dbpedia.org/sparql"
-   #sparql = sparql_dbpedia
-   #info = "Quais as bandas de Jazz e respetivos membros (apenas de \"England\")?"
+   url = "http://dbpedia.org/sparql"
+   sparql = sparql_dbpedia
+   info = "Quais as bandas de Jazz e respetivos membros (apenas de \"England\")?"
 
    #formato = "str"
    formato = "html"

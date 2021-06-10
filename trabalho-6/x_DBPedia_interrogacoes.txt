@@ -23,6 +23,25 @@ WHERE {
 }
 ORDER BY DESC( ?band )
 
+(A2)
+PREFIX dbo: <http://dbpedia.org/ontology/>
+PREFIX dbr: <http://dbpedia.org/resource/>
+PREFIX dbp: <http://dbpedia.org/property/>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+SELECT STR(?bandName) ?personName ?genre
+WHERE {
+  ?band dbo:genre ?genre .
+  ?band foaf:name ?bandName .
+  FILTER( lang(?bandName) = "en" )
+
+  ?band dbo:bandMember ?person .
+  ?person foaf:name ?personName .
+  FILTER( lang(?personName) = "en" )
+}
+ORDER BY DESC( ?band )
+
 
 
 =====//\\=====
@@ -57,3 +76,15 @@ WHERE
 
 =====//\\=====
 (D) Refazer interrogação anterior e obter distância (linha recta) entre Lisbon e London
+PREFIX dbr: <http://dbpedia.org/resource/>
+
+SELECT ?ny ?ny_geo ?ln ?ln_geo ( bif:round ( bif:st_distance ( ?ny_geo, ?ln_geo ) ) ) AS ?dist
+WHERE 
+{
+  dbr:Lisbon rdfs:label ?ny .
+  FILTER(langMatches(lang(?ny), "en")) 
+  dbr:London rdfs:label ?ln . 
+  FILTER(langMatches(lang(?ln), "en")) 
+  dbr:Lisbon geo:geometry ?ny_geo .
+  dbr:London geo:geometry ?ln_geo .
+}

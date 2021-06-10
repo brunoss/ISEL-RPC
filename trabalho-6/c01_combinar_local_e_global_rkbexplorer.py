@@ -80,83 +80,77 @@ registarEmFicheiro( g1, graphFileName, formato="pretty-xml" )
 
 
 
-### =====//=====
-### Ler e interrogar um grafo anteriormente guardado
+## =====//=====
+## Ler e interrogar um grafo anteriormente guardado
 g2 = obter_Grafo( graphFileName, formato="xml" )
 
 q = \
-"""
-PREFIX foaf: <""" + str( FOAF ) + """>
-SELECT ?s ?name
-WHERE
-{
-    ?s foaf:name ?name .
-}
-"""
-print(str(FOAF))
-print(q)   
-
-for s, p, o in g2:
-    print(s, p, o)
-    
+   """
+   PREFIX foaf: <""" + str( FOAF ) + """>
+   SELECT ?s ?name
+   WHERE
+   {
+   ?s foaf:name ?name .
+   }
+   """
 q_resultSet = g2.query( q )
-#for result in q_resultSet: print( result )
-##
-##
-##
-### =====//=====
-### Usar recursos de um grafo como constituintes
-### de uma interrogacao a um "SPARQL endpoint" (usando o SPARQLWrapper)
-### Notar que o SPARQLWrapper nao suporta passagem de parametros 'a interrogacao SPARQL
-### (isso e' suportado pelo RDFLib que no entanto nao suporta acesso a "SPARQL endpoint")
-##
-###conn = SPARQLWrapper( "http://dbpedia.org/sparql" )
-###conn = SPARQLWrapper( "http://citeseer.rkbexplorer.com/sparql" )
-##conn = SPARQLWrapper( "http://dblp.rkbexplorer.com/sparql" )
-##
-### completar a interrogacao com a informacao guardada no grafo local
-##for (nodeID, fullName) in q_resultSet:
-##  q = \
-##  """
-##  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-##  PREFIX akt: <http://www.aktors.org/ontology/portal#>
-##  SELECT DISTINCT ?s ?pub ?title
-##  WHERE
-##  {
-##  ?s rdf:type akt:Person .
-##  ?s akt:full-name \"""" + str( fullName ) + """\" .
-##  ?pub akt:has-author ?s .
-##  ?pub akt:has-title ?title .
-##  }
-##  LIMIT 10
-##  """
-##  apresentarCabecalho( "Interrogacao (SPARQL):" )
-##  print( q )
-##  
-##  conn.setQuery( q )
-##  conn.setReturnFormat( JSON )
-##  # ATENCAO: esta interrogacao e' remota pelo que o
-##  # tempo de execucao depende da qualidade de servico oferecida
-##  # (i.e., pode demorar um pouco a obter resposta)
-##  result = conn.query().convert()
-##
-##  # obter dados e meta-dados
-##  ( varSet, resultSet ) = getResultSet_withMetaData( result )
-##  apresentarCabecalho( "Resultado (em JSON):" )
-##  print( "metaDados = " % varSet )
-##  for r in getResultSet( result ): print( r )
-##
-##  # estender um grafo com a nova informacao
-##  apresentarCabecalho( "Estender grafo com a nova informação:" )
-##  idxTitle = varSet.index( 'title' )
-##  for row in resultSet:
-##    title = row[ idxTitle ]
-##    print( title )
-##    s = nodeID
-##    p = myNS[ "temPublicacaoComTitulo" ]
-##    o = Literal( title )
-##    g2.add( ( s, p, o ) )
-##
-### gravar o grafo estendido com a nova informacao  
-##registarEmFicheiro( g2, graphFileName, formato="xml" )
-##
+for result in q_resultSet: print( result )
+#
+#
+#
+## =====//=====
+## Usar recursos de um grafo como constituintes
+## de uma interrogacao a um "SPARQL endpoint" (usando o SPARQLWrapper)
+## Notar que o SPARQLWrapper nao suporta passagem de parametros 'a interrogacao SPARQL
+## (isso e' suportado pelo RDFLib que no entanto nao suporta acesso a "SPARQL endpoint")
+#
+conn = SPARQLWrapper( "http://dbpedia.org/sparql" )
+##conn = SPARQLWrapper( "http://citeseer.rkbexplorer.com/sparql" )
+#conn = SPARQLWrapper( "http://dblp.rkbexplorer.com/sparql" )
+#
+## completar a interrogacao com a informacao guardada no grafo local
+for (nodeID, fullName) in q_resultSet:
+  q = \
+  """
+  PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+  PREFIX akt: <http://www.aktors.org/ontology/portal#>
+  SELECT DISTINCT ?s ?pub ?title
+  WHERE
+  {
+  ?s rdf:type akt:Person .
+  ?s akt:full-name \"""" + str( fullName ) + """\" .
+  ?pub akt:has-author ?s .
+  ?pub akt:has-title ?title .
+  }
+  LIMIT 10
+  """
+  apresentarCabecalho( "Interrogacao (SPARQL):" )
+  print( q )
+  
+  conn.setQuery( q )
+  conn.setReturnFormat( JSON )
+  # ATENCAO: esta interrogacao e' remota pelo que o
+  # tempo de execucao depende da qualidade de servico oferecida
+  # (i.e., pode demorar um pouco a obter resposta)
+  result = conn.query().convert()
+
+  # obter dados e meta-dados
+  ( varSet, resultSet ) = getResultSet_withMetaData( result )
+  apresentarCabecalho( "Resultado (em JSON):" )
+  print( "metaDados = " % varSet )
+  for r in getResultSet( result ): print( r )
+
+  # estender um grafo com a nova informacao
+  apresentarCabecalho( "Estender grafo com a nova informação:" )
+  idxTitle = varSet.index( 'title' )
+  for row in resultSet:
+    title = row[ idxTitle ]
+    print( title )
+    s = nodeID
+    p = myNS[ "temPublicacaoComTitulo" ]
+    o = Literal( title )
+    g2.add( ( s, p, o ) )
+
+## gravar o grafo estendido com a nova informacao  
+registarEmFicheiro( g2, graphFileName, formato="xml" )
+#
