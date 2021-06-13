@@ -1,0 +1,193 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://FAMILIA#"
+     xml:base="http://FAMILIA"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://FAMILIA"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://FAMILIA#temFilho -->
+
+    <owl:ObjectProperty rdf:about="http://FAMILIA#temFilho">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="http://FAMILIA#Pessoa"/>
+        <rdfs:range rdf:resource="http://FAMILIA#Pessoa"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://FAMILIA#Avó -->
+
+    <owl:Class rdf:about="http://FAMILIA#Avó">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://FAMILIA#Mae"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://FAMILIA#temFilho"/>
+                        <owl:someValuesFrom rdf:resource="http://FAMILIA#Progenitor"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://FAMILIA#Feminino -->
+
+    <owl:Class rdf:about="http://FAMILIA#Feminino">
+        <owl:disjointWith rdf:resource="http://FAMILIA#Homem"/>
+    </owl:Class>
+    
+
+
+    <!-- http://FAMILIA#Homem -->
+
+    <owl:Class rdf:about="http://FAMILIA#Homem">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://FAMILIA#Pessoa"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://FAMILIA#Mulher"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <owl:disjointWith rdf:resource="http://FAMILIA#Mulher"/>
+    </owl:Class>
+    
+
+
+    <!-- http://FAMILIA#Mae -->
+
+    <owl:Class rdf:about="http://FAMILIA#Mae">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://FAMILIA#Mulher"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://FAMILIA#temFilho"/>
+                        <owl:someValuesFrom rdf:resource="http://FAMILIA#Pessoa"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://FAMILIA#Mulher -->
+
+    <owl:Class rdf:about="http://FAMILIA#Mulher">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://FAMILIA#Feminino"/>
+                    <rdf:Description rdf:about="http://FAMILIA#Pessoa"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://FAMILIA#Pai -->
+
+    <owl:Class rdf:about="http://FAMILIA#Pai">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://FAMILIA#Homem"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://FAMILIA#temFilho"/>
+                        <owl:someValuesFrom rdf:resource="http://FAMILIA#Pessoa"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- http://FAMILIA#Pessoa -->
+
+    <owl:Class rdf:about="http://FAMILIA#Pessoa"/>
+    
+
+
+    <!-- http://FAMILIA#Progenitor -->
+
+    <owl:Class rdf:about="http://FAMILIA#Progenitor">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://FAMILIA#Mae"/>
+                    <rdf:Description rdf:about="http://FAMILIA#Pai"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://FAMILIA#Joana -->
+
+    <owl:NamedIndividual rdf:about="http://FAMILIA#Joana">
+        <rdf:type rdf:resource="http://FAMILIA#Feminino"/>
+        <rdf:type rdf:resource="http://FAMILIA#Pessoa"/>
+        <temFilho rdf:resource="http://FAMILIA#Pedro"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://FAMILIA#Pedro -->
+
+    <owl:NamedIndividual rdf:about="http://FAMILIA#Pedro">
+        <rdf:type rdf:resource="http://FAMILIA#Pessoa"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.8.20170104-2310) https://github.com/owlcs/owlapi -->
+
