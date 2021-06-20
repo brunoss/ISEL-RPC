@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="http://www.pizza.com/ontologies/pizza.owl" uri="myPizzaCopy.owl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="http://FAMILIA" uri="familia.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="duplicate:http://PAISES" uri="myPaises.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="duplicate:http://PAISES" uri="paises.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="http://SUPERMERCADO" uri="supermercado.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="http://www.co-ode.org/ontologies/pizza/pizza.owl" uri="pizza_solution-complete.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="duplicate:http://www.pizza.com/ontologies/pizza.owl" uri="myPizza.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="duplicate:http://www.pizza.com/ontologies/pizza.owl" uri="myPizzaCopy.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="duplicate:http://www.pizza.com/ontologies/pizza.owl" uri="pizza.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="http://www.semanticweb.org/a36868/ontologies/2021/5/untitled-ontology-8" uri="myFirstTBox.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1624215658868" name="http://www.semanticweb.org/luis/ontologies/2017/4/untitled-ontology-19" uri="protege_ontology_alinea_3g.owl"/>
+    </group>
+</catalog>
