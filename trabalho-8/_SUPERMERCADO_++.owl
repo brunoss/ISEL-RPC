@@ -1,0 +1,309 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns="http://SUPERMERCADO#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://SUPERMERCADO">
+  <owl:Ontology rdf:about=""/>
+  <owl:Class rdf:ID="Especie">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Habitat"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="PeriodoValidade"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Medio">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Longo"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Curto"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PeriodoValidade"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Fruta">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Produto"/>
+    </rdfs:subClassOf>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:allValuesFrom>
+              <owl:Class rdf:ID="Vegetal"/>
+            </owl:allValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="temEspecie"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#temEspecie"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:allValuesFrom rdf:resource="#Medio"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="temPeriodoValidade"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Peixe"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Carne"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Agua"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Vinho"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Gelado"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Peixe">
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#temEspecie"/>
+            </owl:onProperty>
+            <owl:allValuesFrom>
+              <owl:Class rdf:ID="Animal"/>
+            </owl:allValuesFrom>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:allValuesFrom>
+              <owl:Class rdf:ID="Aquatico"/>
+            </owl:allValuesFrom>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="temHabitat"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#temEspecie"/>
+            </owl:onProperty>
+            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+          </owl:Restriction>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#temHabitat"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:intersectionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <rdfs:subClassOf rdf:resource="#Produto"/>
+    <owl:disjointWith rdf:resource="#Fruta"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Agua"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Vinho"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Gelado"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Carne"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="Terrestre">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Habitat"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Aquatico"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Carne">
+    <rdfs:subClassOf rdf:resource="#Produto"/>
+    <owl:disjointWith rdf:resource="#Fruta"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Agua"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Vinho"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Gelado"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Peixe"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Longo">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#PeriodoValidade"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Medio"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Curto"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:ID="EtiquetaDeCorredor"/>
+  <owl:Class rdf:about="#Animal">
+    <rdfs:subClassOf rdf:resource="#Especie"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Vegetal"/>
+    </owl:disjointWith>
+  </owl:Class>
+  <owl:Class rdf:about="#Gelado">
+    <owl:disjointWith rdf:resource="#Peixe"/>
+    <owl:disjointWith rdf:resource="#Carne"/>
+    <owl:disjointWith rdf:resource="#Fruta"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Agua"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Vinho"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#Produto"/>
+  </owl:Class>
+  <owl:Class rdf:about="#PeriodoValidade">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Habitat"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Especie"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Aquatico">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#Habitat"/>
+    </rdfs:subClassOf>
+    <owl:disjointWith rdf:resource="#Terrestre"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Agua">
+    <rdfs:subClassOf rdf:resource="#Produto"/>
+    <owl:disjointWith rdf:resource="#Peixe"/>
+    <owl:disjointWith rdf:resource="#Carne"/>
+    <owl:disjointWith rdf:resource="#Fruta"/>
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Vinho"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Gelado"/>
+  </owl:Class>
+  <owl:Class rdf:ID="Congelados">
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Bebidas"/>
+    </owl:disjointWith>
+    <owl:disjointWith>
+      <owl:Class rdf:ID="Frescos"/>
+    </owl:disjointWith>
+    <rdfs:subClassOf rdf:resource="#EtiquetaDeCorredor"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Habitat">
+    <owl:disjointWith rdf:resource="#Especie"/>
+    <owl:disjointWith rdf:resource="#PeriodoValidade"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Curto">
+    <owl:disjointWith rdf:resource="#Longo"/>
+    <owl:disjointWith rdf:resource="#Medio"/>
+    <rdfs:subClassOf rdf:resource="#PeriodoValidade"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Vegetal">
+    <rdfs:subClassOf rdf:resource="#Especie"/>
+    <owl:disjointWith rdf:resource="#Animal"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Vinho">
+    <owl:disjointWith rdf:resource="#Peixe"/>
+    <owl:disjointWith rdf:resource="#Carne"/>
+    <owl:disjointWith rdf:resource="#Fruta"/>
+    <owl:disjointWith rdf:resource="#Agua"/>
+    <owl:disjointWith rdf:resource="#Gelado"/>
+    <rdfs:subClassOf rdf:resource="#Produto"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Bebidas">
+    <owl:disjointWith>
+      <owl:Class rdf:about="#Frescos"/>
+    </owl:disjointWith>
+    <owl:disjointWith rdf:resource="#Congelados"/>
+    <rdfs:subClassOf rdf:resource="#EtiquetaDeCorredor"/>
+  </owl:Class>
+  <owl:Class rdf:about="#Frescos">
+    <rdfs:subClassOf rdf:resource="#EtiquetaDeCorredor"/>
+    <owl:equivalentClass>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Restriction>
+            <owl:allValuesFrom rdf:resource="#Animal"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:about="#temEspecie"/>
+            </owl:onProperty>
+          </owl:Restriction>
+          <owl:Class rdf:about="#Fruta"/>
+        </owl:unionOf>
+      </owl:Class>
+    </owl:equivalentClass>
+    <owl:disjointWith rdf:resource="#Bebidas"/>
+    <owl:disjointWith rdf:resource="#Congelados"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#temHabitat">
+    <rdfs:range rdf:resource="#Habitat"/>
+    <rdfs:domain rdf:resource="#Produto"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temPeriodoValidade">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#Produto"/>
+    <rdfs:range rdf:resource="#PeriodoValidade"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#temEspecie">
+    <rdfs:range rdf:resource="#Especie"/>
+    <rdfs:domain rdf:resource="#Produto"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="eDoce">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Produto"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="temSabor">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="temAlcool">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    <rdfs:domain rdf:resource="#Produto"/>
+  </owl:DatatypeProperty>
+  <Terrestre rdf:ID="americaSul"/>
+  <Animal rdf:ID="herbivoro"/>
+  <Terrestre rdf:ID="europa"/>
+  <Terrestre rdf:ID="africa"/>
+  <Aquatico rdf:ID="pacifico"/>
+  <Animal rdf:ID="carnivoro"/>
+  <Vegetal rdf:ID="planta"/>
+  <Produto rdf:ID="laranja">
+    <temPeriodoValidade>
+      <Medio rdf:ID="semana"/>
+    </temPeriodoValidade>
+    <temEspecie>
+      <Vegetal rdf:ID="arvore"/>
+    </temEspecie>
+  </Produto>
+  <Aquatico rdf:ID="indico"/>
+  <Terrestre rdf:ID="americaNorte"/>
+  <Produto rdf:ID="sardinha">
+    <temHabitat>
+      <Aquatico rdf:ID="atlantico"/>
+    </temHabitat>
+    <temEspecie>
+      <Animal rdf:ID="omnivoro"/>
+    </temEspecie>
+  </Produto>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.4, Build 579)  http://protege.stanford.edu -->
