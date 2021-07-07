@@ -23,7 +23,9 @@
 
     <!-- http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#hasContactWith -->
 
-    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#hasContactWith"/>
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#hasContactWith">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    </owl:ObjectProperty>
     
 
 
@@ -484,6 +486,7 @@
             </owl:Restriction>
         </rdf:type>
         <hasContactWith rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#person_p1"/>
+        <hasContactWith rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#person_s4"/>
         <hasManifestationOf rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#suddenOnsetFever"/>
         <hasResidenceIn rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#portugal-ovar"/>
         <hasSymptomsStartingSince rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#_014-days-ago"/>
@@ -500,9 +503,9 @@
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#AcuteRespiratoryInfection"/>
             </owl:Restriction>
         </rdf:type>
-        <hasContactWith rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#person_c1"/>
-        <hasManifestationOf rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#breathingDifficulty"/>
-        <hasSymptomsStartingSince rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#_007-days-ago"/>
+        <hasManifestationOf rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#severe-with-required-hospitalization"/>
+        <hasManifestationOf rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#suddenOnsetFever"/>
+        <isExplainedBy rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#_none_"/>
     </owl:NamedIndividual>
     
 
@@ -516,7 +519,6 @@
                 <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#AcuteRespiratoryInfection"/>
             </owl:Restriction>
         </rdf:type>
-        <hasContactWith rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#person_s2"/>
         <hasManifestationOf rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#suddenOnsetFever"/>
         <hasResidenceIn rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#portugal-ovar"/>
         <hasSymptomsStartingSince rdf:resource="http://www.semanticweb.org/ptrigo/ontologies/2020/COVID19_v01#_014-days-ago"/>
