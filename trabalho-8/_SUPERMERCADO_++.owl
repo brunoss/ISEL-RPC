@@ -9,7 +9,8 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:swrl="http://www.w3.org/2003/11/swrl#"
      xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
-     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#">
+     xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+     xmlns:supermercado="http://SUPERMERCADO#">
     <owl:Ontology rdf:about="http://SUPERMERCADO"/>
     
 
@@ -28,6 +29,7 @@
     <!-- http://SUPERMERCADO#temEspecie -->
 
     <owl:ObjectProperty rdf:about="http://SUPERMERCADO#temEspecie">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://SUPERMERCADO#Produto"/>
         <rdfs:range rdf:resource="http://SUPERMERCADO#Especie"/>
     </owl:ObjectProperty>
@@ -419,6 +421,7 @@
 
     <owl:NamedIndividual rdf:about="http://SUPERMERCADO#americaNorte">
         <rdf:type rdf:resource="http://SUPERMERCADO#Terrestre"/>
+        <temHabitat rdf:resource="http://SUPERMERCADO#americaNorte"/>
     </owl:NamedIndividual>
     
 
