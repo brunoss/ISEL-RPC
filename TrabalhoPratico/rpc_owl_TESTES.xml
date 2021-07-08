@@ -32,6 +32,7 @@
     <!-- http://swat.cse.lehigh.edu/resources/onto/dblp.owl#affiliation -->
 
     <owl:ObjectProperty rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#affiliation">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
         <owl:inverseOf rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#affiliation_inv"/>
         <rdfs:domain rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Person"/>
         <rdfs:range rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Organization"/>
@@ -53,8 +54,8 @@
 
     <owl:ObjectProperty rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#author">
         <owl:inverseOf rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#author_inv"/>
-        <rdfs:domain rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Person"/>
-        <rdfs:range rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication"/>
+        <rdfs:domain rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
+        <rdfs:range rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Person"/>
     </owl:ObjectProperty>
     
 
@@ -62,7 +63,8 @@
     <!-- http://swat.cse.lehigh.edu/resources/onto/dblp.owl#author_inv -->
 
     <owl:ObjectProperty rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#author_inv">
-        <rdfs:domain rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication"/>
+        <rdfs:domain rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Person"/>
+        <rdfs:range rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
     </owl:ObjectProperty>
     
 
@@ -70,6 +72,8 @@
     <!-- http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher -->
 
     <owl:ObjectProperty rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <owl:inverseOf rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher_inv"/>
         <rdfs:domain rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
         <rdfs:range>
             <owl:Class>
@@ -83,6 +87,16 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:range>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher_inv -->
+
+    <owl:ObjectProperty rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher_inv">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdfs:range rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
     </owl:ObjectProperty>
     
 
@@ -155,6 +169,12 @@
     <!-- http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Autor -->
 
     <owl:Class rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Autor">
+        <owl:equivalentClass>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#author_inv"/>
+                <owl:someValuesFrom rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
+            </owl:Restriction>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Person"/>
     </owl:Class>
     
@@ -163,6 +183,17 @@
     <!-- http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Autor_Org -->
 
     <owl:Class rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Autor_Org">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Autor"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#affiliation"/>
+                        <owl:someValuesFrom rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Organization"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Person"/>
     </owl:Class>
     
@@ -204,10 +235,15 @@
 
     <owl:Class rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher"/>
-                <owl:someValuesFrom rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Organization"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher"/>
+                        <owl:someValuesFrom rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Organization"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
         <owl:disjointWith rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Unpublished"/>
@@ -219,10 +255,15 @@
 
     <owl:Class rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Unpublished">
         <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher"/>
-                <owl:hasValue rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#none"/>
-            </owl:Restriction>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#publisher"/>
+                        <owl:hasValue rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#none"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Document"/>
     </owl:Class>

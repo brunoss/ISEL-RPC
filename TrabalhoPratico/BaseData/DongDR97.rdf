@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<rdf:RDF xmlns:dblp="https://dblp.org/rdf/schema-2020-07-01#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:owl="http://www.w3.org/2002/07/owl#" xmlns:dct="http://purl.org/dc/terms/" xmlns:wdt="http://www.wikidata.org/prop/direct/">
+<rdf:Description rdf:about="https://dblp.uni-trier.de/rec/journals/oos/DongDR97">
+<owl:sameAs rdf:resource="https://dblp.org/rec/journals/oos/DongDR97" />
+</rdf:Description>
+<dblp:Article rdf:about="https://dblp.org/rec/journals/oos/DongDR97">
+<rdf:type rdf:resource="https://dblp.org/rdf/schema-2020-07-01#Publication" />
+<rdfs:label>Jin Song Dong et al.: An object-oriented denotational semantics of a small programming language. (1997)</rdfs:label>
+<dblp:title>An object-oriented denotational semantics of a small programming language.</dblp:title>
+<dblp:bibtexType rdf:resource="http://purl.org/net/nknouf/ns/bibtex#Article" />
+<dblp:authoredBy rdf:resource="https://dblp.org/pid/33/6517" />
+<dblp:authoredBy rdf:resource="https://dblp.org/pid/35/6985" />
+<dblp:authoredBy rdf:resource="https://dblp.org/pid/09/3881" />
+<dblp:numberOfCreators rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</dblp:numberOfCreators>
+<dblp:orderedCreators>
+<rdf:List>
+<rdf:first rdf:resource="https://dblp.org/pid/33/6517" />
+<rdf:rest>
+<rdf:List>
+<rdf:first rdf:resource="https://dblp.org/pid/35/6985" />
+<rdf:rest>
+<rdf:List>
+<rdf:first rdf:resource="https://dblp.org/pid/09/3881" />
+<rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil" />
+</rdf:List>
+</rdf:rest>
+</rdf:List>
+</rdf:rest>
+</rdf:List>
+</dblp:orderedCreators>
+<dblp:listedOnTocPage rdf:resource="https://dblp.org/db/journals/oos/oos4" />
+<dblp:pagination>29-52</dblp:pagination>
+<dblp:publishedIn>Object Oriented Syst.</dblp:publishedIn>
+<dblp:publishedInJournal>Object Oriented Syst.</dblp:publishedInJournal>
+<dblp:publishedInJournalVolume>4</dblp:publishedInJournalVolume>
+<dblp:yearOfPublication>1997</dblp:yearOfPublication>
+</dblp:Article>
+<rdf:Description rdf:about="https://dblp.org/rec/journals/oos/DongDR97.rdf">
+<rdfs:label>provenance information for RDF data of dblp record &apos;journals/oos/DongDR97&apos;</rdfs:label>
+<dct:creator rdf:resource="https://dblp.org" />
+<dct:isPartOf rdf:resource="https://dblp.org/rdf/dblp.rdf" />
+<dct:license rdf:resource="https://creativecommons.org/publicdomain/zero/1.0/" />
+<dct:modified>2020-08-25T16:58:58+0200</dct:modified>
+</rdf:Description>
+</rdf:RDF>

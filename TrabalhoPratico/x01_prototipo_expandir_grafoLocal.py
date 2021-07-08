@@ -129,9 +129,9 @@ def main():
    nomeFicheiroGrafoOUTPUT = "z01_meu_grafo_OUTPUT.rdf"
    FOAF = Namespace( "http://xmlns.com/foaf/0.1/" )
    myNS = Namespace( "http://myNS/" )
-   #URL = "http://dbpedia.org/sparql"
+   URL = "http://dbpedia.org/sparql"
    #URL = "http://citeseer.rkbexplorer.com/sparql"
-   URL = "http://dblp.rkbexplorer.com/sparql"
+   #URL = "http://dblp.rkbexplorer.com/sparql"
 
    # gerar e guardar um grafo (pode ser feito externamente a este programa)
    # (este grafo sera' posteriormente usado como INPUT para varias interrogacoes remotas)
