@@ -28,6 +28,16 @@ from SPARQLWrapper import SPARQLWrapper, JSON, XML, N3, RDF
 from x_util_JSONwithMD import getResultSet, getResultSet_withMetaData
 from xml.dom import minidom
 
+#______________________________________________________________________________
+# Global Variables
+FOAF = Namespace( "http://xmlns.com/foaf/0.1/" )
+qualificador_foaf="foaf"
+DBLP = Namespace( "http://swat.cse.lehigh.edu/resources/onto/dblp.owl#" )
+qualificador_dblp="dblp"
+AKT = Namespace( "http://www.aktors.org/ontology/portal#" )
+qualificador_akt="akt"
+AKTS = Namespace( "http://www.aktors.org/ontology/support#" )
+qualificador_akts="akts"
 
 #______________________________________________________________________________
 # A nocao de Grafo (i.e., estrutura RDF, RDFS, OWL)
@@ -38,6 +48,10 @@ from xml.dom import minidom
 class Grafo:
    def __init__( self ):
       self.grafo = Graph()
+      self.grafo.bind( qualificador_foaf, FOAF)
+      self.grafo.bind( qualificador_dblp, DBLP )
+      self.grafo.bind( qualificador_akt, AKT )
+      self.grafo.bind( qualificador_akts , AKTS )
 
    def ler( self, nomeFicheiro, formato="xml" ):
       assert nomeFicheiro != "", "PTS | nomeFicheiro indefinido"
@@ -60,24 +74,35 @@ class Grafo:
       assert self.grafo != None, "PTS | grafo INDEFINIDO"
       return self.grafo.query( interrogacao )
 
+#_______________________________________________________________________________
+# Construir um grafo (exemplo)
+# (numa versao posterior o grafo nao deve ficar aqui pre-definido)
+# (i.e., o grafo que vier a construir nao deve ficar aqui "hard-coded")
+def gerarTripletos( grafo, ns_FOAF ):
+   s = BNode( "MISSBala" )
+   
+   p = rdflib.RDF.type
+   o = ns_FOAF[ "Person" ]
+   grafo.adicionarTripleto( s, p, o )
+   
+   p = DBLP [ "author" ]
+   o = DBLP[ "doc01" ]
+   grafo.adicionarTripleto( s, p, o )
 
+   p = DBLP[ "full-name" ]
+   o = Literal( "Edsger W. Dijkstra" )
+   grafo.adicionarTripleto( s, p, o )
 
-#______________________________________________________________________________
-# A nocao de Grafo Remoto (i.e., uma conexao a uma estrutura RDF, RDFS, OWL)
-# - pode ser lido de URL remoto
-# - pode ser interrogado via SPARQL
-class GrafoRemoto:
-   def __init__( self, URL ):
-      self.conexao = SPARQLWrapper( URL )
+   s = BNode( "book_mi" )
+   
+   p = rdflib.RDF.type
+   o = DBLP[ "Book" ]
+   grafo.adicionarTripleto( s, p, o )
 
-   def interrogar( self, interrogacao, formato ):
-      assert self.conexao != None, "PTS | grafo INDEFINIDO"
-      q = self.conexao.setQuery( interrogacao )
-      self.conexao.setReturnFormat( formato )
-      resultado = self.conexao.query().convert()
-      return resultado
-
-
+def gerarGrafoINPUT( nomeFicheiroGrafoINPUT, ns_FOAF ):
+   g = Grafo()
+   gerarTripletos( g, ns_FOAF )
+   g.escrever( nomeFicheiroGrafoINPUT, formato="pretty-xml" )
 
 #______________________________________________________________________________
 # Utilitario: apresentar informacao
@@ -85,53 +110,13 @@ def apresentarCabecalho( texto ):
    print()
    print( len( texto )*"_" )
    print( texto )
-
-
-
-#_______________________________________________________________________________
-# Construir um grafo (exemplo)
-# (numa versao posterior o grafo nao deve ficar aqui pre-definido)
-# (i.e., o grafo que vier a construir nao deve ficar aqui "hard-coded")
-def gerarTripletos( grafo, ns_FOAF ):
-   s = BNode( "x" )
-   
-   p = rdflib.RDF.type
-   o = ns_FOAF[ "Person" ]
-   grafo.adicionarTripleto( s, p, o )
-
-   p = ns_FOAF[ "name" ]
-   o = Literal( "Edsger W. Dijkstra" )
-   grafo.adicionarTripleto( s, p, o )
-
-   s = BNode( "y" )
-   
-   p = rdflib.RDF.type
-   o = ns_FOAF[ "Person" ]
-   grafo.adicionarTripleto( s, p, o )
-   
-   p = ns_FOAF[ "name" ]
-   o = Literal( "Frederic Brenton Fitch" )
-   grafo.adicionarTripleto( s, p, o )
-
-
-def gerarGrafoINPUT( nomeFicheiroGrafoINPUT, ns_FOAF ):
-   g = Grafo()
-   gerarTripletos( g, ns_FOAF )
-   g.escrever( nomeFicheiroGrafoINPUT, formato="pretty-xml" )
-
   
 
 #______________________________________________________________________________
-# Um "main" com a estrutura geral deste exemplo
 def main():
    # nomes usados ao longo do programa
-   nomeFicheiroGrafoINPUT = "z01_meu_grafo_INPUT.rdf"
-   nomeFicheiroGrafoOUTPUT = "z01_meu_grafo_OUTPUT.rdf"
-   FOAF = Namespace( "http://xmlns.com/foaf/0.1/" )
-   myNS = Namespace( "http://myNS/" )
-   URL = "http://dbpedia.org/sparql"
-   # URL = "http://citeseer.rkbexplorer.com/sparql"
-   # URL = "http://dblp.rkbexplorer.com/sparql"
+   nomeFicheiroGrafoINPUT = "./BaseData/inputGrafo.rdf"
+   nomeFicheiroGrafoOUTPUT = "./BaseData/outputGrafo.rdf"
 
    # gerar e guardar um grafo (pode ser feito externamente a este programa)
    # (este grafo sera' posteriormente usado como INPUT para varias interrogacoes remotas)
@@ -142,90 +127,20 @@ def main():
    grafoLocal = Grafo().ler( nomeFicheiroGrafoINPUT )
    interrogacaoLocal = \
      """
-     PREFIX foaf: <""" + str( FOAF ) + """>
-     SELECT ?s ?name
-     WHERE
+     PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+     PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+     PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+     PREFIX dblp: <http://swat.cse.lehigh.edu/resources/onto/dblp.owl#>
+     SELECT DISTINCT ?author
+     WHERE 
      {
-     ?s foaf:name ?name .
+     ?author rdf:type dblp:Person .
      }
      """
    resultadoInterrogacaoLocal = grafoLocal.interrogar( interrogacaoLocal )
    apresentarCabecalho( "Resultado da Interrogacao ao Grafo Local" )
    for linha in resultadoInterrogacaoLocal: print( linha )
    print()
-
-   # definir um grafo remoto
-   grafoRemoto = GrafoRemoto( URL )
-   # usar o resultado da interrogacao do grafo local
-   # para construir interrogacoes a grafo(s) remoto(s)
-   for ( grafoLocal_sujeito, grafoLocal_nomeCompleto ) in resultadoInterrogacaoLocal:
-      interrogacaoRemota = \
-        """
-        PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-        PREFIX akt: <http://www.aktors.org/ontology/portal#>
-        SELECT DISTINCT *
-        WHERE
-        {
-        ?s rdf:type akt:Person .
-        ?s akt:full-name \"""" + str( grafoLocal_nomeCompleto ) + """\" .
-        ?pub akt:has-author ?s .
-        ?pub akt:has-title ?title .
-        }
-        LIMIT 10
-        """
-      apresentarCabecalho( "Interrogacao (SPARQL):" )
-      print( interrogacaoRemota )
-      print()
-
-      # interrogar o grafo remoto
-      formato = JSON
-      resultadoInterrogacaoRemota = grafoRemoto.interrogar( interrogacaoRemota, formato )
-      # aqui pode usar a funcao de "fallback" nos varios formatos que gonstruiu na aula pratica
-      (metaDados, resultadoInterrogacaoRemota) = getResultSet_withMetaData( resultadoInterrogacaoRemota )
-
-      apresentarCabecalho( "MetaDados:" )
-      print( metaDados )
-      apresentarCabecalho( "Resultado da Interrogacao ao Grafo Remoto (em " + formato + "):" )
-      print( resultadoInterrogacaoRemota )
-
-      # como o formato de resposta da interrogacao e' JSON
-      # podemos usar a estrutura de MetaDados para aceder aos elementos
-      apresentarCabecalho( "Resultado da Interrogacao ao Grafo Remoto (em Texto):" )
-      print()
-     
-      idxTitle = metaDados.index( 'title' )
-      for row in resultadoInterrogacaoRemota:
-         title = row[ idxTitle ]
-         print( title )
-         # adicionar ao grafo local a informacao obtida nesta interrogacao remota
-         #_______________________________________________________________________
-         s = grafoLocal_sujeito
-         p = myNS[ "temPublicacaoComTitulo" ]
-         o = Literal( title )
-         grafoLocal.adicionarTripleto( s, p, o )
-         ##    g2.add( ( s, p, o ) )
-         
-      # actualizar o grafo local com a nova informacao  
-      grafoLocal.escrever( nomeFicheiroGrafoOUTPUT, formato="pretty-xml" )
-      #_______________________________________________________________________
-
-         
-##      No caso do resultado ser devolvido em XML pode usar o "minidom" como se segue:
-##      dom = minidom.parseString( str( resultadoInterrogacaoRemota ) )
-##      for node in dom.getElementsByTagName( 'binding'):
-##         name = node.getAttribute( "name" )
-##         if name == "title":
-##            for item in node.childNodes:
-##               title = item.firstChild.data
-##               print( title )
-##
-##               # adicionar ao grafo local a informacao obtida nesta interrogacao remota
-##               #_______________________________________________________________________
-##               s = grafoLocal_sujeito
-##               p = myNS[ "temPublicacaoComTitulo" ]
-##               o = Literal( title )
-##               grafoLocal.adicionarTripleto( s, p, o )
-
 
 #______________________________________________________________________________
 # O "main" deste modulo (caso o modulo nao seja carregado de outro modulo)

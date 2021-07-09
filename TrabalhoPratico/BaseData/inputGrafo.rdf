@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:dblp="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#" 
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+  xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" 
+  xmlns:owl="http://www.w3.org/2002/07/owl#" 
+  xmlns:dct="http://purl.org/dc/terms/" 
+  xmlns:wdt="http://www.wikidata.org/prop/direct/"
+>
+<dblp:Article-in-Journal rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch97">
+  <rdf:type rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication" />
+  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
+  <dblp:journal_name>Abstracting object state.</dblp:journal_name>
+  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
+  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
+</dblp:Article-in-Journal>
+
+<dblp:Article-in-Proceedings rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch97">
+  <rdf:type rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication" />
+  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
+  <dblp:title>Abstracting object state.</dblp:title>
+  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
+  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
+</dblp:Article-in-Proceedings>
+
+<dblp:Article-in-Proceedings rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch97">
+  <rdf:type rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication" />
+  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
+  <dblp:title>Abstracting object state.</dblp:title>
+  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
+  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
+</dblp:Article-in-Proceedings>
+
+<dblp:Book rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch97">
+  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
+  <dblp:book-title>Abstracting object state.</dblp:book-title>
+  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
+  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
+</dblp:Book>
+
+<dblp:Book>
+  <rdf:type rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Unpublished" />
+  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
+  <dblp:title>Abstracting object state.</dblp:title>
+  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
+  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
+</dblp:Book>
+
+<dblp:Person rdf:about="Frederic">
+  <dblp:full-name>Frederic Brenton Fitch</dblp:full-name>
+</dblp:Person>
+
+</rdf:RDF>

@@ -64,24 +64,17 @@ LIMIT 50
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
 PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
 PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX dblp: <http://swat.cse.lehigh.edu/resources/onto/dblp.owl#>
   
 SELECT DISTINCT ?pub ?pub_title ?author ?author_full_name ?pub_date ?pub_volume ?pub_web_address ?same_as
 WHERE 
    {
-   ?pub rdf:type Book .
+   ?pub rdf:type dblp:Book .
 
-   ?pub has-title ?pub_title .
-   ?pub has-author ?author .
-   ?author rdf:type akt:Person .
-   ?author full-name ?author_full_name .
-
-   OPTIONAL { ?author affiliation ?author_affiliation . 
-              ?author_affiliation has-pretty-name ?author_affiliation_name . } .
-
-   ?pub has-date ?pub_date .
-   ?pub has-volume ?pub_volume .
-   ?pub has-web-address ?pub_web_address .
-   OPTIONAL { ?pub owl:sameAs ?same_as } .
+   ?pub dblp:has-title ?pub_title .
+   ?pub dblp:has-author ?author .
+   ?author rdf:type dblp:Person .
+   ?author dblp:full-name ?author_full_name .
    }
 LIMIT 20
 #_________________________________________________________________________
