@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+  xmlns:ns1="http://xmlns.com/foaf/0.1/"
+  xmlns:dblp="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <dblp:Person rdf:nodeID="y">
+    <dblp:full-name>Frederic Brenton Fitch</dblp:full-name>
+  </dblp:Person>
+</rdf:RDF>
