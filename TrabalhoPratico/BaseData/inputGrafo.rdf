@@ -7,47 +7,63 @@
   xmlns:dct="http://purl.org/dc/terms/" 
   xmlns:wdt="http://www.wikidata.org/prop/direct/"
 >
-<dblp:Article-in-Journal rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch97">
-  <rdf:type rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication" />
-  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
-  <dblp:journal_name>Abstracting object state.</dblp:journal_name>
-  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
-  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
-</dblp:Article-in-Journal>
+<dblp:Article_in_Journal rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch">
+	<dblp:journal_name>Abstracting object state.</dblp:journal_name>
+	<dblp:author dblp:Person="Jan Bosch" />
+	<dblp:publisher rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ObjectSys" />
+</dblp:Article_in_Journal>
 
-<dblp:Article-in-Proceedings rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch97">
-  <rdf:type rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication" />
-  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
-  <dblp:title>Abstracting object state.</dblp:title>
-  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
-  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
-</dblp:Article-in-Proceedings>
+<dblp:Document rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#DongDR97">
+	<dblp:title>An object-oriented denotational semantics of a small programming language.</dblp:title>
+	<dblp:author rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Song" />
+	<dblp:publisher rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ObjectSys" />
+</dblp:Document>
 
-<dblp:Article-in-Proceedings rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch97">
-  <rdf:type rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Publication" />
-  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
-  <dblp:title>Abstracting object state.</dblp:title>
-  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
-  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
-</dblp:Article-in-Proceedings>
+<dblp:Article_in_Proceedings rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#EloviciSLZFSK05">
+	<dblp:author rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Yuval" />
+	<dblp:publisher rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ISI" />
+</dblp:Article_in_Proceedings>
 
-<dblp:Book rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Bosch97">
-  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
-  <dblp:book-title>Abstracting object state.</dblp:book-title>
-  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
-  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
+<dblp:Book rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Graham96">
+	<dblp:book_title>Task scripts, use cases and scenarios in object oriented analysis.</dblp:book_title>
+	<dblp:author rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#IanGraham" />
+	<dblp:publisher rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ObjectSys" />
 </dblp:Book>
 
-<dblp:Book>
-  <rdf:type rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Unpublished" />
-  <rdfs:label>Jan Bosch: Abstracting object state. (1997)</rdfs:label>
-  <dblp:title>Abstracting object state.</dblp:title>
-  <dblp:author rdf:resource="https://dblp.org/pid/60/6845" />
-  <dblp:yearOfPublication>1997</dblp:yearOfPublication>
+<dblp:Book rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#MurphyN96">
+	<dblp:book_title>On the use of static typing to support operations on frameworks.</dblp:book_title>
+	<dblp:author rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Murphy" />
 </dblp:Book>
 
-<dblp:Person rdf:about="Frederic">
-  <dblp:full-name>Frederic Brenton Fitch</dblp:full-name>
+<dblp:Person rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#SJan">
+  <dblp:full-name>Jan Bosch</dblp:full-name>
+  <dblp:affiliation rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ObjectSys"/>
 </dblp:Person>
+
+<dblp:Person rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Murphy">
+  <dblp:full-name>Gail C. Murphy and David Notkin</dblp:full-name>
+  <dblp:affiliation rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ObjectSys"/>
+</dblp:Person>
+
+<dblp:Person rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#IanGraham">
+  <dblp:full-name>Ian M. Graham</dblp:full-name>
+</dblp:Person>
+
+<dblp:Person rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Yuval">
+  <dblp:full-name>Yuval Elovici et al.</dblp:full-name>
+  <dblp:affiliation rdf:resource="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ISI" />
+</dblp:Person>
+
+<dblp:Person rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#Song">
+  <dblp:full-name>Yuval Elovici et al.</dblp:full-name>
+</dblp:Person>
+
+<dblp:Organization rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ObjectSys">
+	<rdfs:label>Object Oriented Syst.</rdfs:label>
+</dblp:Organization>
+
+<dblp:Organization rdf:about="http://swat.cse.lehigh.edu/resources/onto/dblp.owl#ISI">
+	<rdfs:label>ISI</rdfs:label>
+</dblp:Organization>
 
 </rdf:RDF>
