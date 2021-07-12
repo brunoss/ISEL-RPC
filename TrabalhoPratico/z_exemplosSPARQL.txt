@@ -77,18 +77,16 @@ SELECT DISTINCT ?pub ?pub_title ?author ?author_full_name ?pub_date ?pub_volume 
 WHERE 
    {
    ?pub rdf:type dblp:Book-Reference .
-
    ?pub dblp:has-title ?pub_title .
    ?pub dblp:has-author ?author .
+   ?pub dblp:has-date ?pub_date .
+   ?pub dblp:has-volume ?pub_volume .
+   ?pub dblp:has-web-address ?pub_web_address .
    ?author rdf:type dblp:Person .
    ?author dblp:full-name ?author_full_name .
 
    OPTIONAL { ?author dblp:has-affiliation ?author_affiliation . 
               ?author_affiliation dblp:has-pretty-name ?author_affiliation_name . } .
-
-   ?pub dblp:has-date ?pub_date .
-   ?pub dblp:has-volume ?pub_volume .
-   ?pub dblp:has-web-address ?pub_web_address .
    OPTIONAL { ?pub owl:sameAs ?same_as } .
    }
 LIMIT 20
@@ -112,7 +110,6 @@ WHERE
    ?pub rdf:type dblp:Article-Reference .
    ?pub dblp:article-of-journal ?pub_type .
    ?pub_type dblp:has-title ?pub_type_title .
-
    ?pub dblp:has-title ?pub_title .
    ?pub dblp:has-date ?pub_date .
    ?pub dblp:has-volume ?pub_volume .
@@ -148,7 +145,6 @@ WHERE
    ?pub_type rdf:type dblp:Conference-Proceedings-Reference .
    ?pub_type dblp:has-title ?pub_type_title .
    ?pub dblp:cites-publication-reference ?pub_type .
-
    ?pub dblp:has-title ?pub_title .
    ?pub dblp:has-date ?pub_date .
    ?pub dblp:has-web-address ?pub_web_address .
