@@ -84,21 +84,15 @@
     
 
 
-    <!-- https://dblp.org/rdf/schema-2020-07-01#otherElectronicEdition -->
-
-    <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#otherElectronicEdition"/>
-    
-
-
     <!-- https://dblp.org/rdf/schema-2020-07-01#pagination -->
 
     <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#pagination"/>
     
 
 
-    <!-- https://dblp.org/rdf/schema-2020-07-01#primaryElectronicEdition -->
+    <!-- https://dblp.org/rdf/schema-2020-07-01#publishedAsPartOf -->
 
-    <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#primaryElectronicEdition"/>
+    <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#publishedAsPartOf"/>
     
 
 
@@ -108,27 +102,21 @@
     
 
 
-    <!-- https://dblp.org/rdf/schema-2020-07-01#publishedInJournal -->
+    <!-- https://dblp.org/rdf/schema-2020-07-01#publishedInBook -->
 
-    <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#publishedInJournal"/>
-    
-
-
-    <!-- https://dblp.org/rdf/schema-2020-07-01#publishedInJournalVolume -->
-
-    <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#publishedInJournalVolume"/>
-    
-
-
-    <!-- https://dblp.org/rdf/schema-2020-07-01#publishedInJournalVolumeIssue -->
-
-    <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#publishedInJournalVolumeIssue"/>
+    <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#publishedInBook"/>
     
 
 
     <!-- https://dblp.org/rdf/schema-2020-07-01#title -->
 
     <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#title"/>
+    
+
+
+    <!-- https://dblp.org/rdf/schema-2020-07-01#yearOfEvent -->
+
+    <AnnotationProperty rdf:about="https://dblp.org/rdf/schema-2020-07-01#yearOfEvent"/>
     
 
 
@@ -149,12 +137,6 @@
     
 
 
-    <!-- https://dblp.org/rdf/schema-2020-07-01#Article -->
-
-    <Class rdf:about="https://dblp.org/rdf/schema-2020-07-01#Article"/>
-    
-
-
     <!-- https://dblp.org/rdf/schema-2020-07-01#Publication -->
 
     <Class rdf:about="https://dblp.org/rdf/schema-2020-07-01#Publication"/>
@@ -172,29 +154,26 @@
     
 
 
-    <!-- https://dblp.org/rec/journals/jsyml/Fitch37 -->
+    <!-- https://dblp.org/rec/conf/pc/Dijkstra78b -->
 
-    <NamedIndividual rdf:about="https://dblp.org/rec/journals/jsyml/Fitch37">
-        <rdf:type rdf:resource="https://dblp.org/rdf/schema-2020-07-01#Article"/>
+    <NamedIndividual rdf:about="https://dblp.org/rec/conf/pc/Dijkstra78b">
         <rdf:type rdf:resource="https://dblp.org/rdf/schema-2020-07-01#Publication"/>
-        <rdfs:label>Frederic Brenton Fitch: Modal Functions in Two-Valued Logic. (1937)</rdfs:label>
-        <wdt:P356>10.2307/2266292</wdt:P356>
-        <dblp:authoredBy rdf:resource="https://dblp.org/pid/19/1648"/>
-        <dblp:bibtexType rdf:resource="http://purl.org/net/nknouf/ns/bibtex#Article"/>
-        <dblp:listedOnTocPage rdf:resource="https://dblp.org/db/journals/jsyml/jsyml2"/>
+        <rdfs:label>Edsger W. Dijkstra: Finding the Correctness Proof of a Concurrent Program. (1978)</rdfs:label>
+        <wdt:P356>10.1007/BFb0014652</wdt:P356>
+        <dblp:authoredBy rdf:resource="https://dblp.org/pid/d/WEDijkstra"/>
+        <dblp:bibtexType rdf:resource="http://purl.org/net/nknouf/ns/bibtex#Inproceedings"/>
+        <dblp:listedOnTocPage rdf:resource="https://dblp.org/db/conf/pc/pc1978"/>
         <dblp:numberOfCreators rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</dblp:numberOfCreators>
         <dblp:orderedCreators>
             <rdf:Description/>
         </dblp:orderedCreators>
-        <dblp:otherElectronicEdition rdf:resource="http://projecteuclid.org/euclid.jsl/1183383695"/>
-        <dblp:pagination>125-128</dblp:pagination>
-        <dblp:primaryElectronicEdition rdf:resource="https://doi.org/10.2307/2266292"/>
-        <dblp:publishedIn>J. Symb. Log.</dblp:publishedIn>
-        <dblp:publishedInJournal>J. Symb. Log.</dblp:publishedInJournal>
-        <dblp:publishedInJournalVolume>2</dblp:publishedInJournalVolume>
-        <dblp:publishedInJournalVolumeIssue>3</dblp:publishedInJournalVolumeIssue>
-        <dblp:title>Modal Functions in Two-Valued Logic.</dblp:title>
-        <dblp:yearOfPublication>1937</dblp:yearOfPublication>
+        <dblp:pagination>24-34</dblp:pagination>
+        <dblp:publishedAsPartOf rdf:resource="https://dblp.org/rec/conf/pc/1978"/>
+        <dblp:publishedIn>Program Construction</dblp:publishedIn>
+        <dblp:publishedInBook>Program Construction</dblp:publishedInBook>
+        <dblp:title>Finding the Correctness Proof of a Concurrent Program.</dblp:title>
+        <dblp:yearOfEvent>1978</dblp:yearOfEvent>
+        <dblp:yearOfPublication>1979</dblp:yearOfPublication>
     </NamedIndividual>
     
 
@@ -207,12 +186,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    <rdf:Description rdf:about="https://dblp.org/rec/journals/jsyml/Fitch37.rdf">
-        <dct:isPartOf rdf:resource="https://dblp.org/rdf/dblp.rdf"/>
+    <rdf:Description rdf:about="https://dblp.org/rec/conf/pc/Dijkstra78b.rdf">
+        <dct:modified>2017-05-19T12:26:21+0200</dct:modified>
         <dct:license rdf:resource="https://creativecommons.org/publicdomain/zero/1.0/"/>
-        <rdfs:label>provenance information for RDF data of dblp record &apos;journals/jsyml/Fitch37&apos;</rdfs:label>
         <dct:creator rdf:resource="https://dblp.org"/>
-        <dct:modified>2017-05-28T13:21:56+0200</dct:modified>
+        <rdfs:label>provenance information for RDF data of dblp record &apos;conf/pc/Dijkstra78b&apos;</rdfs:label>
+        <dct:isPartOf rdf:resource="https://dblp.org/rdf/dblp.rdf"/>
     </rdf:Description>
 </rdf:RDF>
 

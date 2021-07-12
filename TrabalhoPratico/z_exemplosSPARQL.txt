@@ -18,50 +18,45 @@
 
 
 #_________________________________________________________________________
-# obter as sub-classes de akt:Publication-Reference
+# obter as sub-classes de dblp:Publication-Reference
 # The distinction between publication and publication-reference
 # makes it possible to distinguish between multiple occurrences
 # of the same publication, for instance in different media
 # c.f., http://www.aktors.org/ontology/portal#article-of-journal
-# os indivíduos pertencem às sub-classes de akt:Publication-Reference
-PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
-PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
-PREFIX akts: <http://www.aktors.org/ontology/support#>
- 
-SELECT DISTINCT ?sub_type
+# os indivíduos pertencem às sub-classes de dblp:Publication-Reference
+PREFIX dblp:  <http://swat.cse.lehigh.edu/resources/onto/dblp.owl#>
+
+SELECT DISTINCT ?sub_type ?o
 WHERE 
    { 
-   ?sub_type rdfs:subClassOf akt:Publication-Reference .
+   ?sub_type rdfs:subClassOf ?o .
    }
 LIMIT 50
 
 
 
 # RESPOSTA:
-# akt:Publication-Reference
-# akt:Article-Reference
-# akt:Book-Reference
-# akt:Conference-Proceedings-Reference
-# akt:Thesis-Reference
-# akt:Book-Section-Reference
+# dblp:Publication-Reference
+# dblp:Article-Reference
+# dblp:Book-Reference
+# dblp:Conference-Proceedings-Reference
+# dblp:Thesis-Reference
+# dblp:Book-Section-Reference
 ### as próximas classes não têm indivíduos (em DBLP)
-# akt:Web-Reference
-# akt:Workshop-Proceedings-Reference
-# akt:Proceedings-Paper-Reference
-# akt:Technical-Report-Reference
-# akt:Edited-Book-Reference
+# dblp:Web-Reference
+# dblp:Workshop-Proceedings-Reference
+# dblp:Proceedings-Paper-Reference
+# dblp:Technical-Report-Reference
+# dblp:Edited-Book-Reference
 
-# Para verificar se determinada classe (e.g., akt:Web-Reference) tem alguma instância pode executar:
+# Para verificar se determinada classe (e.g., dblp:Web-Reference) tem alguma instância pode executar:
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
+PREFIX dblp:  <http://swat.cse.lehigh.edu/resources/onto/dblp.owl#>
  
 SELECT DISTINCT ?instance
 WHERE 
    { 
-   ?instance rdf:type akt:Web-Reference .
+   ?instance rdf:type dblp:Article-Reference .
    }
 LIMIT 50
 #_________________________________________________________________________
@@ -75,28 +70,25 @@ LIMIT 50
 #_________________________________________________________________________
 # BOOK
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
+PREFIX dblp:  <http://swat.cse.lehigh.edu/resources/onto/dblp.owl#>
 PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
-PREFIX akts: <http://www.aktors.org/ontology/support#>
   
 SELECT DISTINCT ?pub ?pub_title ?author ?author_full_name ?pub_date ?pub_volume ?pub_web_address ?same_as
 WHERE 
    {
-   ?pub rdf:type akt:Book-Reference .
+   ?pub rdf:type dblp:Book-Reference .
 
-   ?pub akt:has-title ?pub_title .
-   ?pub akt:has-author ?author .
-   ?author rdf:type akt:Person .
-   ?author akt:full-name ?author_full_name .
+   ?pub dblp:has-title ?pub_title .
+   ?pub dblp:has-author ?author .
+   ?author rdf:type dblp:Person .
+   ?author dblp:full-name ?author_full_name .
 
-   OPTIONAL { ?author akt:has-affiliation ?author_affiliation . 
-              ?author_affiliation akts:has-pretty-name ?author_affiliation_name . } .
+   OPTIONAL { ?author dblp:has-affiliation ?author_affiliation . 
+              ?author_affiliation dblp:has-pretty-name ?author_affiliation_name . } .
 
-   ?pub akt:has-date ?pub_date .
-   ?pub akt:has-volume ?pub_volume .
-   ?pub akt:has-web-address ?pub_web_address .
+   ?pub dblp:has-date ?pub_date .
+   ?pub dblp:has-volume ?pub_volume .
+   ?pub dblp:has-web-address ?pub_web_address .
    OPTIONAL { ?pub owl:sameAs ?same_as } .
    }
 LIMIT 20
@@ -112,29 +104,25 @@ LIMIT 20
 #_________________________________________________________________________
 # ARTICLE-IN-JOURNAL
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
-PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
-PREFIX akts: <http://www.aktors.org/ontology/support#>
+PREFIX dblp:  <http://swat.cse.lehigh.edu/resources/onto/dblp.owl#>
   
 SELECT DISTINCT ?pub ?pub_title ?author ?author_full_name ?author_affiliation_name ?pub_date ?pub_volume ?pub_web_address ?pub_type ?pub_type_title ?same_as
 WHERE 
    {
-   ?pub rdf:type akt:Article-Reference .
-   ?pub akt:article-of-journal ?pub_type .
-   ?pub_type akt:has-title ?pub_type_title .
+   ?pub rdf:type dblp:Article-Reference .
+   ?pub dblp:article-of-journal ?pub_type .
+   ?pub_type dblp:has-title ?pub_type_title .
 
-   ?pub akt:has-title ?pub_title .
-   ?pub akt:has-date ?pub_date .
-   ?pub akt:has-volume ?pub_volume .
-   ?pub akt:has-web-address ?pub_web_address .
-   ?pub akt:has-author ?author .
-   ?author rdf:type akt:Person .
-   ?author akt:full-name ?author_full_name .
+   ?pub dblp:has-title ?pub_title .
+   ?pub dblp:has-date ?pub_date .
+   ?pub dblp:has-volume ?pub_volume .
+   ?pub dblp:has-web-address ?pub_web_address .
+   ?pub dblp:has-author ?author .
+   ?author rdf:type dblp:Person .
+   ?author dblp:full-name ?author_full_name .
 
-   OPTIONAL { ?author akt:has-affiliation ?author_affiliation . 
-              ?author_affiliation akts:has-pretty-name ?author_affiliation_name . } .
+   OPTIONAL { ?author dblp:has-affiliation ?author_affiliation . 
+              ?author_affiliation dblp:has-pretty-name ?author_affiliation_name . } .
    }
 LIMIT 20
 
@@ -151,31 +139,28 @@ LIMIT 20
 #_________________________________________________________________________
 # ARTICLE-IN-PROCEEDINGS
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
 PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
-PREFIX akts: <http://www.aktors.org/ontology/support#>
+PREFIX dblp:  <http://swat.cse.lehigh.edu/resources/onto/dblp.owl#>
   
 SELECT DISTINCT ?pub ?pub_title ?author ?author_full_name ?pub_date ?pub_type ?pub_type_title ?pub_journal_type_title ?pub_journal_type ?pub_web_address ?same_as
 WHERE 
    {
-   ?pub_type rdf:type akt:Conference-Proceedings-Reference .
-   ?pub_type akt:has-title ?pub_type_title .
-   ?pub akt:cites-publication-reference ?pub_type
+   ?pub_type rdf:type dblp:Conference-Proceedings-Reference .
+   ?pub_type dblp:has-title ?pub_type_title .
+   ?pub dblp:cites-publication-reference ?pub_type .
 
-   ?pub akt:has-title ?pub_title .
-   ?pub akt:has-date ?pub_date .
-   ?pub akt:has-web-address ?pub_web_address .
-   ?pub akt:has-author ?author .
-   ?author rdf:type akt:Person .
-   ?author akt:full-name ?author_full_name .
+   ?pub dblp:has-title ?pub_title .
+   ?pub dblp:has-date ?pub_date .
+   ?pub dblp:has-web-address ?pub_web_address .
+   ?pub dblp:has-author ?author .
+   ?author rdf:type dblp:Person .
+   ?author dblp:full-name ?author_full_name .
 
-   OPTIONAL { ?author akt:has-affiliation ?author_affiliation . 
-              ?author_affiliation akts:has-pretty-name ?author_affiliation_name . } .
+   OPTIONAL { ?author dblp:has-affiliation ?author_affiliation . 
+              ?author_affiliation dblp:has-pretty-name ?author_affiliation_name . } .
 
-   OPTIONAL { ?pub akt:article-of-journal ?pub_journal_type .
-              ?pub_journal_type akt:has-title ?pub_journal_type_title } .
+   OPTIONAL { ?pub dblp:article-of-journal ?pub_journal_type .
+              ?pub_journal_type dblp:has-title ?pub_journal_type_title } .
 
    OPTIONAL { ?pub owl:sameAs ?same_as } .
    }
@@ -190,38 +175,25 @@ LIMIT 20
 
 #_________________________________________________________________________
 # AUTHOR-AFFILIATION-PUBLICATION (dada uma determinada parte de um nome)
-PREFIX id:   <http://dblp.rkbexplorer.com/id/>
 PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
-PREFIX owl:  <http://www.w3.org/2002/07/owl#>
-PREFIX akt:  <http://www.aktors.org/ontology/portal#>
-PREFIX akts: <http://www.aktors.org/ontology/support#>
+PREFIX dblp:  <http://swat.cse.lehigh.edu/resources/onto/dblp.owl#>
 
 SELECT DISTINCT ?author ?author_name ?author_affiliation ?author_affiliation_name ?pub ?pub_title
 WHERE
    {
-   ?author rdf:type akt:Person .
-   ?author akt:full-name ?author_name .
+   ?author rdf:type dblp:Person .
+   ?author dblp:full-name ?author_name .
    FILTER( regex( str( ?author_name ), "Dijkstra" ) )
 
-   ?pub akt:has-author ?author .
-   ?pub akt:has-title ?pub_title .
+   ?pub dblp:has-author ?author .
+   ?pub dblp:has-title ?pub_title .
 
-   OPTIONAL{ ?author akt:has-affiliation ?author_affiliation .
-             ?author_affiliation akts:has-pretty-name ?author_affiliation_name } .
+   OPTIONAL{ ?author dblp:has-affiliation ?author_affiliation .
+             ?author_affiliation dblp:has-pretty-name ?author_affiliation_name } .
    }
-LIMIT 2
+LIMIT 20
+
 #_________________________________________________________________________
 
 ## OUTRO NOME DE AUTOR:
    FILTER( regex( str( ?author_name ), "Griffeth" ) )
-
-
-=====//||\\=====
-
-
-
-
-
-
